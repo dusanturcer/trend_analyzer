@@ -4,6 +4,9 @@ import io
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "sans-serif"
+matplotlib.rcParams["font.sans-serif"] = [
+    "Segoe UI", "Arial", "Calibri", "DejaVu Sans", "sans-serif"]
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
