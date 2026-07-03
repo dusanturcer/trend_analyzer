@@ -1,0 +1,57 @@
+# Crypto Pump Analyzer
+
+Detects quick price jumps ("pumps") and drops in the top-200 coins over the last
+6 months of hourly Binance data, then analyzes what preceded them — especially
+volume anomalies — and compares against a random control group to measure real
+predictive value.
+
+## Quick start (run on your own machine)
+
+```
+pip install -r requirements.txt
+python fetch_data.py          # ~10-20 min: downloads 6 months of 1h candles
+python analyze.py             # detects events, extracts features, writes report
+```
+
+Then open `output/report.html`.
+
+## What you get
+
+| File | Contents |
+|---|---|
+| `output/report.html` | Full findings: precursor stats vs control group, conditional probabilities, clusters, breakdowns, charts |
+| `output/events.csv` | Every detected pump/dump with all precursor features |
+| `output/sweep.csv` | Event counts across all threshold/window definitions |
+| `output/charts/` | Price+volume charts of notable events |
+| `data/klines/*.parquet` | Cached raw candles (delete to force re-download) |
+
+## Optional: live screener
+
+```
+python screener.py
+```
+
+Scans current Binance data for coins showing the precursor signature right now
+(volume spike without a big price move yet). Prints a ranked watchlist.
+
+## Tuning
+
+Edit `config.py` — pump threshold/window, sweep grid, precursor window,
+volume-spike z-score, etc. Re-run `analyze.py` (no re-download needed).
+
+## Notes
+
+- Data: Binance public API (no key needed) + CoinGecko free API for the
+  top-200 list. Coins not listed on Binance with a USDT pair are skipped
+  (typically ~165-175 of the top 200 remain). Stablecoins/wrapped assets excluded.
+- `fetch_data.py` is resumable — re-run it if it's interrupted.
+- This is statistical analysis of past data, not financial advice. Past
+  patterns may not persist.
+
+## Tests
+
+```
+python -m pytest test_pipeline.py -q
+```
+
+Runs the pipeline on synthetic data with planted pumps.

@@ -1,0 +1,251 @@
+================================================================================
+ TREND ANALYZER - COMPLETE REFERENCE
+ Crypto pump precursor analysis: definitions, files, and how everything works
+================================================================================
+
+
+--------------------------------------------------------------------------------
+ 1. WHAT THIS PROJECT DOES
+--------------------------------------------------------------------------------
+It downloads 6 months of hourly price/volume data for the top-200 coins
+(Binance USDT pairs), finds every "quick jump" (pump) and "quick drop" (dump),
+then looks at what happened BEFORE each one - especially unusual volume - and
+measures whether those precursors actually predict pumps, by comparing against
+random control windows and computing real hit rates.
+
+
+--------------------------------------------------------------------------------
+ 2. DEFINITIONS (the exact meaning of every term used)
+--------------------------------------------------------------------------------
+
+PUMP (quick jump)
+    Price rises >= 10% within a rolling 24-hour window (defaults; set by
+    PUMP_THRESHOLD and PUMP_WINDOW_H in config.py).
+    Technically: move[t] = close[t] / min(close over last 24h) - 1 >= 0.10.
+    Each event gets:
+      start  = the bar with the lowest close before the peak (where the move
+               really began)
+      peak   = highest close of the move
+      end    = when price first gives back 50% of the move, or start+72h
+    Overlapping detections within 24h (MIN_EVENT_GAP_H) are merged; the
+    biggest one is kept.
+
+DUMP (quick drop)
+    Same detection, mirrored (run on 1/price). A >= 10% fall within 24h.
+
+MAGNITUDE
+    close[peak] / close[start] - 1. "abs_magnitude" is its absolute value.
+
+DURATION_H
+    Hours from event start to peak.
+
+VOLUME Z-SCORE (vol_z) - the core anomaly measure
+    How unusual this hour's volume is, adjusted for time of day.
+    Crypto volume has a strong daily rhythm (busy US/EU hours, quiet Asian
+    night), so each hour is compared only against the SAME hour of day over
+    the trailing 30 days (BASELINE_DAYS):
+        vol_z = (log(volume_now) - mean_same_hour_30d) / std_same_hour_30d
+    vol_z = 2 means volume is 2 standard deviations above what is normal for
+    this coin at this time of day. Log-volume is used because raw volume is
+    heavily skewed.
+
+VOLUME SPIKE
+    Any hour with vol_z >= 2.0 (VOLUME_SPIKE_Z in config.py).
+
+SILENT VOLUME SPIKE  - the key predictive signal
+    A volume spike that happens while price has NOT yet moved
+    (absolute price change < 2% over the surrounding 3 hours).
+    Interpretation: someone is accumulating/positioning before the move.
+    This is the signal whose predictive value the report measures.
+
+PRECURSOR WINDOW
+    The 48 hours (PRE_WINDOW_H) strictly BEFORE an event's start. All
+    "what happened before the pump" features are computed on this window.
+
+PRECURSOR FEATURES (computed per event, columns in events.csv)
+    max_vol_z_48h / max_vol_z_24h   highest volume z-score in last 48h / 24h
+    mean_vol_z_24h                  average volume z-score, last 24h
+    n_spike_hours_24h               how many hours had vol_z >= 2, last 24h
+    had_volume_spike                True if any spike in the 48h window
+    vol_ramp_24h / 12h / 6h         slope of vol_z over that window - positive
+                                    = volume building up gradually
+    buy_ratio_24h                   average taker-buy ratio, last 24h (see below)
+    buy_ratio_delta                 that ratio minus the coin's 30d baseline -
+                                    positive = unusual buy pressure
+    max_trades_z_24h                trade-count anomaly (same z-score method)
+    pre_ret_24h                     price return during the prior 24h
+    rvol_pctl_pre                   volatility percentile just before the event
+    was_coiling                     True if volatility was in the bottom 25%
+                                    (QUIET_VOL_PCTL) - unusually quiet price
+    lead_time_h                     hours between the FIRST volume spike in the
+                                    window and the pump start
+    silent_volume_spike             True if a spike occurred with price flat
+
+TAKER BUY RATIO
+    taker_buy_quote / quote_volume, from Binance klines. The share of volume
+    where the aggressive side was a buyer (market buys). > 0.5 = net buying
+    pressure. A rising ratio before a pump = someone lifting offers.
+
+COILING
+    Price volatility (rolling 24h std of hourly returns) in the bottom 25% of
+    the coin's own history. A quiet, compressed price before an explosive
+    move - the classic "calm before the storm" pattern.
+
+CONTROL WINDOW (control group)
+    A randomly chosen moment with NO event within +-48h, with the same
+    precursor features computed. 5 controls per event (N_CONTROL_PER_EVENT).
+    Purpose: honesty. "70% of pumps had a volume spike before" means nothing
+    if 65% of random windows did too. Every claim in the report is checked
+    against this baseline.
+
+BASE RATE
+    P(a >= 10% pump starts within the next 24h) at a randomly picked hour,
+    averaged over all coins. The number the signal has to beat.
+
+HIT RATE (precision)
+    Of all silent volume spikes found in 6 months, the fraction actually
+    followed by a >= 10% pump within 24h.
+
+LIFT
+    hit rate / base rate. Lift 3x = the signal makes a pump 3 times more
+    likely than picking a random hour. Lift ~1x = the signal is worthless.
+
+RETRACEMENT
+    After the peak, how much of the pump is given back within 72h.
+    retrace_frac = (peak - lowest point after) / (peak - start).
+    1.0 = full round trip. hours_to_half_retrace = how fast 50% was given back.
+
+SWEEP
+    The same detection re-run for every combination of threshold
+    {5, 10, 15, 20%} x window {4, 12, 24h}, so you can see how the definition
+    of "quick jump" changes the number of events (output/sweep.csv).
+
+MARKET-CAP TIERS
+    mega = rank 1-20, large = 21-75, mid = 76-150, small = 151-200.
+    Small caps pump more often and harder; the report breaks stats down by tier.
+
+BTC CONTEXT (btc_ret_24h)
+    BTC's 24h return at the moment the pump started - was the coin pumping
+    with the market, against it, or in a flat market?
+
+EVENT SHAPE / CLUSTERS
+    Each pump's price path from 24h before to 24h after its start, normalized,
+    then grouped with k-means into families (e.g. slow-build-and-hold vs
+    spike-and-collapse).
+
+
+--------------------------------------------------------------------------------
+ 3. FILES - WHAT EACH ONE DOES AND HOW
+--------------------------------------------------------------------------------
+
+config.py
+    All settings in one place: paths, universe size, data window, pump
+    definition, sweep grid, precursor window, z-score threshold, control-group
+    size. Edit this, then re-run analyze.py (no re-download needed unless you
+    change the data window/interval).
+
+fetch_data.py                                          [run 1st, on your PC]
+    1. Gets the top-200 coins by market cap from CoinGecko (free API).
+    2. Filters out stablecoins/wrapped assets (EXCLUDE_SYMBOLS).
+    3. Maps each coin to its Binance USDT pair; coins not on Binance are
+       skipped (~165-175 remain). Saves the list to data/universe.json.
+    4. Downloads ~6 months (183 days) of 1h candles per coin from the free
+       Binance klines API (no key needed), 1000 candles per request,
+       throttled, with retry/backoff on rate limits.
+    5. Caches each coin as data/klines/<PAIR>.parquet.
+    Resumable: already-downloaded coins are skipped, so just re-run it if
+    interrupted. Delete a parquet file to force a re-download.
+
+detection.py                                           [library, no need to run]
+    Event detection. rolling_moves() computes gain-from-rolling-min;
+    detect_events() turns threshold crossings into deduplicated events with
+    start/peak/end; retracement() measures the after-peak give-back;
+    sweep_counts() re-runs detection over the whole threshold/window grid.
+
+features.py                                            [library, no need to run]
+    Precursor math. add_baselines() adds the hour-of-day-adjusted volume
+    z-score, taker-buy ratio + baseline, trade-count z-score, and volatility
+    percentile columns to a candle dataframe. window_features() computes all
+    precursor features for the 48h before any given moment. event_shape()
+    extracts normalized price paths for clustering.
+
+analyze.py                                             [run 2nd]
+    The orchestrator. For every cached coin:
+      - detects pumps and dumps (primary definition)
+      - computes precursor features for each event
+      - samples random control windows and computes the same features
+      - scans ALL silent volume spikes in the data and checks whether a pump
+        followed within 24h (this gives hit rate / lift)
+      - runs the sweep grid
+    Then aggregates everything, clusters pump shapes, and writes:
+      output/events.csv     every event + all features (spreadsheet-friendly)
+      output/signals.csv    every silent volume spike + outcome
+      output/sweep.csv      event counts per definition
+      output/report.html    the full report (open in a browser)
+
+report.py                                              [library, no need to run]
+    Builds report.html: summary cards, pumps-vs-control feature table with
+    Mann-Whitney p-values, hit-rate/lift table (overall, per tier, per spike
+    strength), the average volume-z curve around pump starts, lead-time /
+    magnitude / hour-of-day / retracement histograms, shape-cluster chart,
+    tier breakdown, and close-up charts of the 12 largest pumps. All charts
+    are embedded in the single HTML file.
+
+screener.py                                            [optional, run any time]
+    Applies the studied precursor to LIVE data: downloads the last ~33 days
+    of candles for the universe, computes today's volume z-scores, and prints
+    a ranked watchlist of coins with a volume spike in the last 12h.
+    silent=True rows (volume up, price still flat) match the historical
+    pattern the report quantifies. Also saves output/screener_watchlist.csv.
+    Requires universe.json, so run fetch_data.py at least once first.
+
+test_pipeline.py                                       [optional]
+    Self-test on synthetic data with planted pumps and planted pre-pump
+    volume spikes. Verifies detection finds the planted events, features see
+    the spikes, and the full pipeline produces a report.
+    Run: python -m pytest test_pipeline.py -q
+
+requirements.txt
+    Python dependencies: pandas, numpy, requests, pyarrow, matplotlib,
+    scipy, scikit-learn.
+
+data/  (created by fetch_data.py)
+    universe.json           the coin list with ranks/market caps
+    klines/<PAIR>.parquet   cached raw candles per coin
+
+output/  (created by analyze.py / screener.py)
+    report.html, events.csv, signals.csv, sweep.csv, screener_watchlist.csv,
+    charts/
+
+
+--------------------------------------------------------------------------------
+ 4. HOW TO RUN (recap)
+--------------------------------------------------------------------------------
+    pip install -r requirements.txt
+    python fetch_data.py        (~10-20 min, resumable)
+    python analyze.py           (then open output\report.html)
+    python screener.py          (optional: live watchlist)
+
+
+--------------------------------------------------------------------------------
+ 5. HOW TO READ THE REPORT
+--------------------------------------------------------------------------------
+    Top cards       % of pumps with a prior volume spike vs % of control
+                    windows - if these are close, the precursor is weak.
+    Section 1       which precursor features differ significantly before
+                    pumps (p-value < 0.01 marked YES).
+    Section 2       THE key table: hit rate and lift of the silent-spike
+                    signal, overall and by tier/spike strength. This is the
+                    number that tells you if the pattern is tradeable.
+    Section 3       average volume behavior in the 48h before pumps - shows
+                    at what lead time volume typically starts rising.
+    Section 4       lead times, magnitudes, time-of-day, and how fast pumps
+                    retrace (spoiler: chasing after the peak is usually late).
+    Section 5       pump shape families (clusters).
+    Section 6       how event counts change with the definition (sweep).
+    Section 7       market-cap tier breakdown + BTC context.
+    Section 8       close-ups of the biggest pumps.
+
+NOTE: This is statistical analysis of past data, not financial advice.
+Volume precursors are real but noisy; expect useful lift, not certainty.
+================================================================================
