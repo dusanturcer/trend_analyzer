@@ -89,9 +89,9 @@ def analyze_coin(pair, meta, btc, rng):
     # ---- signal scan: every silent volume spike -> did a pump follow? ----
     fwd = forward_max_gain(df["close"], C.PUMP_WINDOW_H)
     ret3h = df["close"].pct_change(3).abs()
-    spike = ((df["vol_z"] >= C.VOLUME_SPIKE_Z) & (ret3h < 0.02)).values
+    spike_raw = ((df["vol_z"] >= C.VOLUME_SPIKE_Z) & (ret3h < 0.02)).to_numpy()
     # keep first hour of each spike run only
-    spike[1:] &= ~spike[:-1]
+    spike = spike_raw & ~np.concatenate(([False], spike_raw[:-1]))
     signals = []
     valid = slice(24 * 7, len(df) - C.PUMP_WINDOW_H)
     for i in np.flatnonzero(spike[valid]) + valid.start:
