@@ -99,6 +99,7 @@ def analyze_coin(pair, meta, btc, rng):
     for i in np.flatnonzero(spike[valid]) + valid.start:
         signals.append({"pair": pair, "tier": meta["tier"],
                         "period": period.iloc[i],
+                        "time": df["open_time"].iloc[i],
                         "vol_z": float(df["vol_z"].iloc[i]),
                         "fwd_gain": float(fwd.iloc[i]),
                         "pumped": bool(fwd.iloc[i] >= C.PUMP_THRESHOLD)})
@@ -199,6 +200,10 @@ def main():
                           / period_counts["count"].sum())
         period_base = (period_counts["sum"]
                        / period_counts["count"]).to_dict()
+        pd.DataFrame({"period": list(period_base),
+                      "base_rate": list(period_base.values()),
+                      "overall": base_rate}
+                     ).to_csv(C.OUT_DIR / "base_rates.csv", index=False)
     else:
         base_rate, period_base = np.nan, {}
 

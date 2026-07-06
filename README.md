@@ -25,6 +25,16 @@ Then open `output/report.html`.
 | `output/charts/` | Price+volume charts of notable events |
 | `data/klines/*.parquet` | Cached raw candles (delete to force re-download) |
 
+## Is the edge still there?
+
+```
+python validate_edge.py
+```
+
+Run monthly after refreshing data (`fetch_data.py` + `analyze.py`). Compares
+the screener profile's last-90-days hit rate against its long-term baseline
+and prints PASS / WARN / FAIL. FAIL = stop acting on flags.
+
 ## Optional: live screener
 
 ```
