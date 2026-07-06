@@ -24,6 +24,7 @@ EXCLUDE_SYMBOLS = {
 INTERVAL = "1h"
 LOOKBACK_DAYS = 183                      # ~6 months
 BINANCE_BASE = "https://api.binance.com"
+OKX_BASE = "https://www.okx.com"
 COINGECKO_BASE = "https://api.coingecko.com/api/v3"
 REQUEST_SLEEP = 0.25                     # seconds between Binance requests
 KLINE_LIMIT = 1000                       # max candles per request
@@ -48,3 +49,8 @@ CONTROL_SEED = 42
 
 # ---------------------------------------------------------------- screener
 SCREENER_TOP_N = 30                      # how many candidates to print
+# tuned to the segment where 6-month history showed real lift:
+SCREENER_MIN_Z = 3.0                     # only strong spikes (hist: z>4 ~3.9x lift)
+SCREENER_MIN_RANK = 76                   # mid+small caps only (rank 76-200)
+SCREENER_WINDOW_H = 24                   # scan window (median lead time was ~32h)
+SCREENER_SILENT_MAX_MOVE = 0.03          # "price still flat" = |move| < 3%

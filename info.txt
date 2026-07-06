@@ -147,11 +147,15 @@ config.py
 fetch_data.py                                          [run 1st, on your PC]
     1. Gets the top-200 coins by market cap from CoinGecko (free API).
     2. Filters out stablecoins/wrapped assets (EXCLUDE_SYMBOLS).
-    3. Maps each coin to its Binance USDT pair; coins not on Binance are
-       skipped (~165-175 remain). Saves the list to data/universe.json.
+    3. Maps each coin to its Binance USDT pair; coins not on Binance fall
+       back to their OKX USDT spot pair; only coins on neither exchange are
+       skipped. Saves the list to data/universe.json (with an "exchange"
+       field per coin).
     4. Downloads ~6 months (183 days) of 1h candles per coin from the free
-       Binance klines API (no key needed), 1000 candles per request,
-       throttled, with retry/backoff on rate limits.
+       Binance / OKX public APIs (no keys needed), throttled, with
+       retry/backoff on rate limits. NOTE: OKX candles have no taker-buy
+       volume or trade count, so buy_ratio_* and *_trades_z features are
+       blank (NaN) for OKX coins; all volume/price features work normally.
     5. Caches each coin as data/klines/<PAIR>.parquet.
     Resumable: already-downloaded coins are skipped, so just re-run it if
     interrupted. Delete a parquet file to force a re-download.

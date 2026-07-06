@@ -41,9 +41,11 @@ volume-spike z-score, etc. Re-run `analyze.py` (no re-download needed).
 
 ## Notes
 
-- Data: Binance public API (no key needed) + CoinGecko free API for the
-  top-200 list. Coins not listed on Binance with a USDT pair are skipped
-  (typically ~165-175 of the top 200 remain). Stablecoins/wrapped assets excluded.
+- Data: Binance public API first, OKX public API as fallback for coins not
+  on Binance (no keys needed), + CoinGecko free API for the top-200 list.
+  Only coins on neither exchange are skipped. Stablecoins/wrapped assets
+  excluded. OKX candles lack taker-buy volume and trade counts, so the
+  buy-ratio and trades-z features are blank (NaN) for OKX coins.
 - `fetch_data.py` is resumable — re-run it if it's interrupted.
 - This is statistical analysis of past data, not financial advice. Past
   patterns may not persist.

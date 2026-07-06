@@ -1,4 +1,8 @@
-"""Download 6 months of 1h candles for the top-200 coins (Binance USDT pairs).
+"""Download 6 months of 1h candles for the top-200 coins.
+
+Binance USDT pairs are used first; coins not on Binance fall back to OKX
+USDT spot pairs. Note: OKX candles have no taker-buy volume / trade count,
+so those features are NaN for OKX coins.
 
 Resumable: already-downloaded symbols are skipped. Run:
     python fetch_data.py
@@ -8,8 +12,15 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 
+import numpy as np
 import pandas as pd
 import requests
+
+try:  # trust the Windows certificate store (needed behind corporate proxies)
+    import truststore
+    truststore.inject_into_ssl()
+except ImportError:
+    pass
 
 import config as C
 
@@ -71,6 +82,53 @@ def binance_usdt_symbols():
             if s["quoteAsset"] == C.QUOTE_ASSET and s["status"] == "TRADING"}
 
 
+def okx_usdt_symbols():
+    """Set of base assets with a live USDT spot pair on OKX."""
+    data = get(f"{C.OKX_BASE}/api/v5/public/instruments",
+               {"instType": "SPOT"}).get("data", [])
+    return {s["baseCcy"].upper(): s["instId"] for s in data
+            if s["quoteCcy"] == C.QUOTE_ASSET and s["state"] == "live"}
+
+
+def fetch_okx_klines(inst_id, start_ms, end_ms):
+    """1h candles from OKX (newest-first pages of 100, paginated backwards)."""
+    raw = []
+    after = str(end_ms)
+    while True:
+        resp = get(f"{C.OKX_BASE}/api/v5/market/history-candles", {
+            "instId": inst_id, "bar": "1H", "limit": 100, "after": after})
+        data = resp.get("data", [])
+        if not data:
+            break
+        raw += data
+        oldest = int(data[-1][0])
+        if oldest <= start_ms:
+            break
+        after = str(oldest)
+        time.sleep(C.REQUEST_SLEEP)
+    rows = []
+    for k in raw:
+        ts = int(k[0])
+        if ts < start_ms or ts > end_ms:
+            continue
+        o, h, lo, c_ = map(float, k[1:5])
+        vol = float(k[5])
+        quote = float(k[7]) if len(k) > 7 and k[7] else vol * c_
+        rows.append({
+            "open_time": ts, "open": o, "high": h, "low": lo, "close": c_,
+            "volume": vol, "close_time": ts + 3600_000 - 1,
+            "quote_volume": quote,
+            "trades": np.nan,                 # not provided by OKX
+            "taker_buy_base": np.nan, "taker_buy_quote": np.nan,
+        })
+    if not rows:
+        return None
+    df = pd.DataFrame(rows)
+    df["open_time"] = pd.to_datetime(df["open_time"], unit="ms", utc=True)
+    df["close_time"] = pd.to_datetime(df["close_time"], unit="ms", utc=True)
+    return df.drop_duplicates("open_time").sort_values("open_time")
+
+
 def fetch_klines(pair, start_ms, end_ms):
     rows = []
     cur = start_ms
@@ -104,12 +162,25 @@ def main():
     print(f"  {len(coins)} coins after excluding stablecoins/wrapped assets")
 
     print("Fetching Binance USDT pairs...")
-    pairs = binance_usdt_symbols()
+    bnc = binance_usdt_symbols()
+    print("Fetching OKX USDT pairs...")
+    try:
+        okx = okx_usdt_symbols()
+    except requests.RequestException as e:
+        print(f"  WARNING: OKX unreachable ({type(e).__name__}) - "
+              "continuing with Binance coins only")
+        okx = {}
 
-    universe = [dict(c, pair=pairs[c["symbol"]]) for c in coins
-                if c["symbol"] in pairs]
-    skipped = [c["symbol"] for c in coins if c["symbol"] not in pairs]
-    print(f"  {len(universe)} coins tradeable on Binance; "
+    universe, skipped = [], []
+    for c in coins:
+        if c["symbol"] in bnc:
+            universe.append(dict(c, pair=bnc[c["symbol"]], exchange="binance"))
+        elif c["symbol"] in okx:
+            universe.append(dict(c, pair=okx[c["symbol"]], exchange="okx"))
+        else:
+            skipped.append(c["symbol"])
+    n_b = sum(1 for c in universe if c["exchange"] == "binance")
+    print(f"  {n_b} coins on Binance, {len(universe) - n_b} more on OKX; "
           f"skipped {len(skipped)}: {', '.join(skipped[:20])}"
           + ("..." if len(skipped) > 20 else ""))
 
@@ -124,9 +195,12 @@ def main():
         path = C.KLINES_DIR / f"{c['pair']}.parquet"
         if path.exists():
             continue
-        print(f"[{i}/{len(universe)}] {c['pair']}")
+        print(f"[{i}/{len(universe)}] {c['pair']} ({c['exchange']})")
         try:
-            df = fetch_klines(c["pair"], start_ms, end_ms)
+            if c["exchange"] == "okx":
+                df = fetch_okx_klines(c["pair"], start_ms, end_ms)
+            else:
+                df = fetch_klines(c["pair"], start_ms, end_ms)
         except Exception as e:
             print(f"  FAILED: {e}")
             continue
