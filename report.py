@@ -89,8 +89,12 @@ def event_chart(pair, df, ev):
     return fig
 
 
+TIER_ORDER = ["mega", "large", "mid", "small", "micro", "tiny"]
+
+
 def write_report(ev_df, ctl_df, sig_df, sweep_df, base_rate,
-                 epoch, clusters, shapes, chart_candidates):
+                 epoch, clusters, shapes, chart_candidates,
+                 period_base=None):
     pumps = ev_df[ev_df["direction"] == "pump"] if len(ev_df) else ev_df
     dumps = ev_df[ev_df["direction"] == "dump"] if len(ev_df) else ev_df
     parts = []
@@ -129,7 +133,8 @@ def write_report(ev_df, ctl_df, sig_df, sweep_df, base_rate,
         &ge;{C.PUMP_THRESHOLD:.0%} pump follow within {C.PUMP_WINDOW_H}h?</p>""")
         rows = [rate_block("All coins", len(sig_df),
                            int(sig_df["pumped"].sum()), base_rate)]
-        for tier in ["mega", "large", "mid", "small"]:
+        tiers = [t for t in TIER_ORDER if (sig_df["tier"] == t).any()]
+        for tier in tiers:
             s = sig_df[sig_df["tier"] == tier]
             rows.append(rate_block(tier, len(s), int(s["pumped"].sum()),
                                    base_rate))
@@ -141,6 +146,20 @@ def write_report(ev_df, ctl_df, sig_df, sweep_df, base_rate,
         parts.append("<p><i>Lift &gt; 1x means the signal beats picking a "
                      "random hour. Hit rate is the false-positive-adjusted "
                      "reality check.</i></p>")
+
+        # regime robustness: same signal, split by calendar half-year,
+        # each compared against ITS OWN period's base rate
+        if period_base and "period" in sig_df:
+            rows = []
+            for per in sorted(period_base):
+                s = sig_df[sig_df["period"] == per]
+                rows.append(rate_block(per, len(s), int(s["pumped"].sum()),
+                                       float(period_base[per])))
+            parts.append("<h3>Does the edge survive across market regimes?</h3>"
+                         "<p>Same signal, split by half-year. Stable lift "
+                         "across periods = a robust pattern; lift collapsing "
+                         "in some periods = regime-dependent.</p>")
+            parts.append(pd.DataFrame(rows).to_html(index=False))
 
     # ---------------- epoch chart ----------------
     if epoch is not None and len(epoch):

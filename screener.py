@@ -31,7 +31,8 @@ def main():
     rows = []
     print(f"Scanning {len(targets)} mid/small-cap coins "
           f"(rank >= {C.SCREENER_MIN_RANK}) for silent spikes "
-          f"z >= {C.SCREENER_MIN_Z} in the last {W}h...")
+          f"z >= {C.SCREENER_MIN_Z} in the last {W}h "
+          f"(liquidity >= ${C.SCREENER_MIN_USD_PER_H:,.0f}/h)...")
     for i, c in enumerate(targets, 1):
         if i % 25 == 0:
             print(f"  {i}/{len(targets)}")
@@ -44,6 +45,10 @@ def main():
             print(f"  {c['pair']}: {e}")
             continue
         if df is None or len(df) < 24 * 10:
+            continue
+        # liquidity filter: median hourly dollar volume over the last 30 days
+        liq = float(df["quote_volume"].tail(24 * 30).median())
+        if liq < C.SCREENER_MIN_USD_PER_H:
             continue
         df = F.add_baselines(df)
         win = df.iloc[-W:]
@@ -61,6 +66,7 @@ def main():
             f"spike_hours_{W}h": int((win["vol_z"] >= C.SCREENER_MIN_Z).sum()),
             f"price_move_{W}h": f"{price_move:+.1%}",
             "buy_ratio": round(float(win["buy_ratio"].mean()), 3),
+            "usd_per_h": f"{liq / 1000:,.0f}k",
             "silent": silent,
         })
 

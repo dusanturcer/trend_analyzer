@@ -19,12 +19,12 @@ from report import write_report
 def load_universe():
     with open(C.DATA_DIR / "universe.json") as f:
         universe = json.load(f)
-    caps = sorted([c["market_cap"] for c in universe], reverse=True)
-    # market-cap tiers: mega = top 20, large = 21-75, mid = 76-150, small = rest
+    # market-cap tiers by rank
     for c in universe:
         r = c["rank"]
         c["tier"] = ("mega" if r <= 20 else "large" if r <= 75
-                     else "mid" if r <= 150 else "small")
+                     else "mid" if r <= 150 else "small" if r <= 200
+                     else "micro" if r <= 350 else "tiny")
     return {c["pair"]: c for c in universe
             if (C.KLINES_DIR / f"{c['pair']}.parquet").exists()}
 
@@ -92,16 +92,22 @@ def analyze_coin(pair, meta, btc, rng):
     spike_raw = ((df["vol_z"] >= C.VOLUME_SPIKE_Z) & (ret3h < 0.02)).to_numpy()
     # keep first hour of each spike run only
     spike = spike_raw & ~np.concatenate(([False], spike_raw[:-1]))
+    period = (df["open_time"].dt.year.astype(str) + "-H"
+              + np.where(df["open_time"].dt.month <= 6, "1", "2"))
     signals = []
     valid = slice(24 * 7, len(df) - C.PUMP_WINDOW_H)
     for i in np.flatnonzero(spike[valid]) + valid.start:
         signals.append({"pair": pair, "tier": meta["tier"],
+                        "period": period.iloc[i],
                         "vol_z": float(df["vol_z"].iloc[i]),
                         "fwd_gain": float(fwd.iloc[i]),
                         "pumped": bool(fwd.iloc[i] >= C.PUMP_THRESHOLD)})
-    base_rate = float((fwd.iloc[valid] >= C.PUMP_THRESHOLD).mean())
+    # base rate per calendar half-year (regime split) as (hours, pump-hours)
+    ok = (fwd.iloc[valid] >= C.PUMP_THRESHOLD)
+    per_counts = (pd.DataFrame({"per": period.iloc[valid], "ok": ok})
+                  .groupby("per")["ok"].agg(["count", "sum"]))
 
-    return events, controls, signals, base_rate, D.sweep_counts(df), df, all_evs
+    return events, controls, signals, per_counts, D.sweep_counts(df), df, all_evs
 
 
 def cluster_shapes(shapes, k=4):
@@ -143,13 +149,14 @@ def main():
         btc = pd.read_parquet(C.KLINES_DIR / "BTCUSDT.parquet")
 
     events, controls, signals, sweep_rows, shapes = [], [], [], [], []
-    base_rates, dfs_events, chart_candidates = [], [], []
+    dfs_events, chart_candidates = [], []
+    period_counts = None
 
     for n, (pair, meta) in enumerate(universe.items(), 1):
         if n % 25 == 0:
             print(f"  {n}/{len(universe)}")
         try:
-            evs, ctr, sig, br, sweep, df, all_evs = analyze_coin(
+            evs, ctr, sig, per_counts, sweep, df, all_evs = analyze_coin(
                 pair, meta, btc, rng)
         except Exception as e:
             print(f"  {pair} failed: {e}")
@@ -157,7 +164,8 @@ def main():
         events += evs
         controls += ctr
         signals += sig
-        base_rates.append(br)
+        period_counts = (per_counts if period_counts is None
+                         else period_counts.add(per_counts, fill_value=0))
         for r in sweep:
             sweep_rows.append({"pair": pair, **r})
         dfs_events.append((df, all_evs))
@@ -186,9 +194,17 @@ def main():
     clusters = cluster_shapes(shapes)
     chart_candidates.sort(key=lambda t: -t[0])
 
-    write_report(ev_df, ctl_df, sig_df, sweep_df,
-                 float(np.mean(base_rates)) if base_rates else np.nan,
-                 epoch, clusters, shapes, chart_candidates[:12])
+    if period_counts is not None and period_counts["count"].sum() > 0:
+        base_rate = float(period_counts["sum"].sum()
+                          / period_counts["count"].sum())
+        period_base = (period_counts["sum"]
+                       / period_counts["count"]).to_dict()
+    else:
+        base_rate, period_base = np.nan, {}
+
+    write_report(ev_df, ctl_df, sig_df, sweep_df, base_rate,
+                 epoch, clusters, shapes, chart_candidates[:12],
+                 period_base=period_base)
 
     print(f"\nDone. {len(ev_df)} events "
           f"({(ev_df['direction'] == 'pump').sum()} pumps, "

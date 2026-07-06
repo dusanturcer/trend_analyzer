@@ -57,7 +57,8 @@ def get(url, params=None, retries=5):
 def top_coins():
     """Top-N coins by market cap from CoinGecko (symbol, name, market_cap)."""
     coins = []
-    for page in (1, 2):
+    n_pages = -(-C.TOP_N_COINS // 100)
+    for page in range(1, n_pages + 1):
         coins += get(f"{C.COINGECKO_BASE}/coins/markets", {
             "vs_currency": "usd", "order": "market_cap_desc",
             "per_page": 100, "page": page, "sparkline": "false",
@@ -194,7 +195,13 @@ def main():
     for i, c in enumerate(universe, 1):
         path = C.KLINES_DIR / f"{c['pair']}.parquet"
         if path.exists():
-            continue
+            # re-download only if the cached file doesn't cover the window
+            try:
+                t0 = pd.read_parquet(path, columns=["open_time"])["open_time"].min()
+                if t0 <= start + timedelta(days=7):
+                    continue
+            except Exception:
+                pass
         print(f"[{i}/{len(universe)}] {c['pair']} ({c['exchange']})")
         try:
             if c["exchange"] == "okx":

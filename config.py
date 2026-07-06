@@ -9,7 +9,7 @@ OUT_DIR = ROOT / "output"
 CHARTS_DIR = OUT_DIR / "charts"
 
 # ---------------------------------------------------------------- universe
-TOP_N_COINS = 200                        # by market cap (CoinGecko)
+TOP_N_COINS = 500                        # by market cap (CoinGecko)
 QUOTE_ASSET = "USDT"
 # stablecoins / wrapped assets to exclude from the universe
 EXCLUDE_SYMBOLS = {
@@ -22,7 +22,7 @@ EXCLUDE_SYMBOLS = {
 
 # ---------------------------------------------------------------- data window
 INTERVAL = "1h"
-LOOKBACK_DAYS = 183                      # ~6 months
+LOOKBACK_DAYS = 550                      # ~18 months (regime-robustness check)
 BINANCE_BASE = "https://api.binance.com"
 OKX_BASE = "https://www.okx.com"
 COINGECKO_BASE = "https://api.coingecko.com/api/v3"
@@ -54,3 +54,4 @@ SCREENER_MIN_Z = 3.0                     # only strong spikes (hist: z>4 ~3.9x l
 SCREENER_MIN_RANK = 76                   # mid+small caps only (rank 76-200)
 SCREENER_WINDOW_H = 24                   # scan window (median lead time was ~32h)
 SCREENER_SILENT_MAX_MOVE = 0.03          # "price still flat" = |move| < 3%
+SCREENER_MIN_USD_PER_H = 100_000         # skip thin books (median $/hour, 30d)
