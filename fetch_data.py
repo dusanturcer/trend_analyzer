@@ -194,20 +194,37 @@ def main():
 
     for i, c in enumerate(universe, 1):
         path = C.KLINES_DIR / f"{c['pair']}.parquet"
+        fetcher = (fetch_okx_klines if c["exchange"] == "okx"
+                   else fetch_klines)
+
         if path.exists():
-            # re-download only if the cached file doesn't cover the window
             try:
-                t0 = pd.read_parquet(path, columns=["open_time"])["open_time"].min()
+                old = pd.read_parquet(path)
+                t0, t1 = old["open_time"].min(), old["open_time"].max()
                 if t0 <= start + timedelta(days=7):
+                    # window start covered -> incremental top-up only
+                    gap_ms = int(t1.timestamp() * 1000)  # refetch last bar
+                    if gap_ms >= end_ms - 3_600_000:
+                        continue                          # already current
+                    print(f"[{i}/{len(universe)}] {c['pair']} "
+                          f"(update from {t1:%Y-%m-%d %H:%M})")
+                    try:
+                        new = fetcher(c["pair"], gap_ms, end_ms)
+                    except Exception as e:
+                        print(f"  FAILED: {e}")
+                        continue
+                    if new is not None and len(new):
+                        df = (pd.concat([old[old["open_time"] < t1], new])
+                              .drop_duplicates("open_time")
+                              .sort_values("open_time"))
+                        df.to_parquet(path, index=False)
                     continue
             except Exception:
-                pass
-        print(f"[{i}/{len(universe)}] {c['pair']} ({c['exchange']})")
+                pass  # unreadable cache -> full re-download below
+
+        print(f"[{i}/{len(universe)}] {c['pair']} ({c['exchange']}) full")
         try:
-            if c["exchange"] == "okx":
-                df = fetch_okx_klines(c["pair"], start_ms, end_ms)
-            else:
-                df = fetch_klines(c["pair"], start_ms, end_ms)
+            df = fetcher(c["pair"], start_ms, end_ms)
         except Exception as e:
             print(f"  FAILED: {e}")
             continue

@@ -2,7 +2,7 @@
  {
   "symbol": "BTC",
   "name": "Bitcoin",
-  "market_cap": 1283787569741,
+  "market_cap": 1266141553906,
   "rank": 1,
   "pair": "BTCUSDT",
   "exchange": "binance"
@@ -10,7 +10,7 @@
  {
   "symbol": "ETH",
   "name": "Ethereum",
-  "market_cap": 217029194110,
+  "market_cap": 214338553349,
   "rank": 2,
   "pair": "ETHUSDT",
   "exchange": "binance"
@@ -18,7 +18,7 @@
  {
   "symbol": "BNB",
   "name": "BNB",
-  "market_cap": 78993144173,
+  "market_cap": 77900016168,
   "rank": 4,
   "pair": "BNBUSDT",
   "exchange": "binance"
@@ -26,7 +26,7 @@
  {
   "symbol": "XRP",
   "name": "XRP",
-  "market_cap": 71274873418,
+  "market_cap": 69793842477,
   "rank": 6,
   "pair": "XRPUSDT",
   "exchange": "binance"
@@ -34,7 +34,7 @@
  {
   "symbol": "SOL",
   "name": "Solana",
-  "market_cap": 47643415909,
+  "market_cap": 47070861232,
   "rank": 7,
   "pair": "SOLUSDT",
   "exchange": "binance"
@@ -42,7 +42,7 @@
  {
   "symbol": "TRX",
   "name": "TRON",
-  "market_cap": 31237114922,
+  "market_cap": 31324838050,
   "rank": 8,
   "pair": "TRXUSDT",
   "exchange": "binance"
@@ -50,7 +50,7 @@
  {
   "symbol": "DOGE",
   "name": "Dogecoin",
-  "market_cap": 11876811749,
+  "market_cap": 11550985503,
   "rank": 11,
   "pair": "DOGEUSDT",
   "exchange": "binance"
@@ -58,7 +58,7 @@
  {
   "symbol": "ZEC",
   "name": "Zcash",
-  "market_cap": 7653829176,
+  "market_cap": 7641678099,
   "rank": 15,
   "pair": "ZECUSDT",
   "exchange": "binance"
@@ -66,47 +66,47 @@
  {
   "symbol": "ADA",
   "name": "Cardano",
-  "market_cap": 6871697811,
-  "rank": 16,
+  "market_cap": 6599095387,
+  "rank": 17,
   "pair": "ADAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "XLM",
   "name": "Stellar",
-  "market_cap": 6806940544,
-  "rank": 17,
+  "market_cap": 6582856784,
+  "rank": 18,
   "pair": "XLMUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "LINK",
   "name": "Chainlink",
-  "market_cap": 6002075339,
+  "market_cap": 5905072840,
   "rank": 20,
   "pair": "LINKUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "GRAM",
-  "name": "Gram (prev. Toncoin)",
-  "market_cap": 4858599575,
+  "symbol": "BCH",
+  "name": "Bitcoin Cash",
+  "market_cap": 4775930118,
   "rank": 22,
-  "pair": "GRAMUSDT",
+  "pair": "BCHUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "BCH",
-  "name": "Bitcoin Cash",
-  "market_cap": 4846256138,
-  "rank": 23,
-  "pair": "BCHUSDT",
+  "symbol": "GRAM",
+  "name": "Gram (prev. Toncoin)",
+  "market_cap": 4564998131,
+  "rank": 24,
+  "pair": "GRAMUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "LTC",
   "name": "Litecoin",
-  "market_cap": 3467476910,
+  "market_cap": 3403470408,
   "rank": 28,
   "pair": "LTCUSDT",
   "exchange": "binance"
@@ -114,15 +114,15 @@
  {
   "symbol": "HBAR",
   "name": "Hedera",
-  "market_cap": 3213673706,
-  "rank": 29,
+  "market_cap": 3106222545,
+  "rank": 31,
   "pair": "HBARUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SUI",
   "name": "Sui",
-  "market_cap": 3035473629,
+  "market_cap": 2990449074,
   "rank": 32,
   "pair": "SUIUSDT",
   "exchange": "binance"
@@ -130,7 +130,7 @@
  {
   "symbol": "AVAX",
   "name": "Avalanche",
-  "market_cap": 3002782686,
+  "market_cap": 2922335964,
   "rank": 33,
   "pair": "AVAXUSDT",
   "exchange": "binance"
@@ -138,7 +138,7 @@
  {
   "symbol": "NEAR",
   "name": "NEAR Protocol",
-  "market_cap": 2675833500,
+  "market_cap": 2617060391,
   "rank": 36,
   "pair": "NEARUSDT",
   "exchange": "binance"
@@ -146,7 +146,7 @@
  {
   "symbol": "SHIB",
   "name": "Shiba Inu",
-  "market_cap": 2587930380,
+  "market_cap": 2564125927,
   "rank": 37,
   "pair": "SHIBUSDT",
   "exchange": "binance"
@@ -154,7 +154,7 @@
  {
   "symbol": "TAO",
   "name": "Bittensor",
-  "market_cap": 2061281066,
+  "market_cap": 2049859498,
   "rank": 41,
   "pair": "TAOUSDT",
   "exchange": "binance"
@@ -162,15 +162,15 @@
  {
   "symbol": "UNI",
   "name": "Uniswap",
-  "market_cap": 1971669883,
-  "rank": 42,
+  "market_cap": 1957636929,
+  "rank": 43,
   "pair": "UNIUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "WLFI",
   "name": "World Liberty Financial",
-  "market_cap": 1859619449,
+  "market_cap": 1926232672,
   "rank": 44,
   "pair": "WLFIUSDT",
   "exchange": "binance"
@@ -178,23 +178,23 @@
  {
   "symbol": "ASTER",
   "name": "Aster",
-  "market_cap": 1710178042,
-  "rank": 45,
+  "market_cap": 1701554651,
+  "rank": 46,
   "pair": "ASTERUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ONDO",
   "name": "Ondo",
-  "market_cap": 1623712961,
-  "rank": 47,
+  "market_cap": 1607041717,
+  "rank": 49,
   "pair": "ONDOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "RLUSD",
   "name": "Ripple USD",
-  "market_cap": 1596253638,
+  "market_cap": 1598356410,
   "rank": 50,
   "pair": "RLUSDUSDT",
   "exchange": "binance"
@@ -202,63 +202,63 @@
  {
   "symbol": "DOT",
   "name": "Polkadot",
-  "market_cap": 1499732703,
-  "rank": 51,
+  "market_cap": 1459609225,
+  "rank": 52,
   "pair": "DOTUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "WLD",
-  "name": "Worldcoin",
-  "market_cap": 1439049949,
-  "rank": 54,
-  "pair": "WLDUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "AAVE",
   "name": "Aave",
-  "market_cap": 1422692214,
+  "market_cap": 1410529298,
   "rank": 55,
   "pair": "AAVEUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "SKY",
-  "name": "Sky",
-  "market_cap": 1320003634,
-  "rank": 57,
-  "pair": "SKYUSDT",
+  "symbol": "WLD",
+  "name": "Worldcoin",
+  "market_cap": 1376628828,
+  "rank": 56,
+  "pair": "WLDUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "BFUSD",
   "name": "BFUSD",
-  "market_cap": 1318283396,
-  "rank": 58,
+  "market_cap": 1317719506,
+  "rank": 57,
   "pair": "BFUSDUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "DEXE",
-  "name": "DeXe",
-  "market_cap": 1298040512,
-  "rank": 59,
-  "pair": "DEXEUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "MORPHO",
   "name": "Morpho",
-  "market_cap": 1294056544,
-  "rank": 60,
+  "market_cap": 1301966719,
+  "rank": 58,
   "pair": "MORPHOUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "SKY",
+  "name": "Sky",
+  "market_cap": 1298168085,
+  "rank": 59,
+  "pair": "SKYUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "DEXE",
+  "name": "DeXe",
+  "market_cap": 1290670565,
+  "rank": 60,
+  "pair": "DEXEUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ICP",
   "name": "Internet Computer",
-  "market_cap": 1233855255,
+  "market_cap": 1237397419,
   "rank": 61,
   "pair": "ICPUSDT",
   "exchange": "binance"
@@ -266,7 +266,7 @@
  {
   "symbol": "PEPE",
   "name": "Pepe",
-  "market_cap": 1148930918,
+  "market_cap": 1131958591,
   "rank": 64,
   "pair": "PEPEUSDT",
   "exchange": "binance"
@@ -274,7 +274,7 @@
  {
   "symbol": "ETC",
   "name": "Ethereum Classic",
-  "market_cap": 1114374552,
+  "market_cap": 1095580402,
   "rank": 65,
   "pair": "ETCUSDT",
   "exchange": "binance"
@@ -282,7 +282,7 @@
  {
   "symbol": "U",
   "name": "United Stables",
-  "market_cap": 1026950672,
+  "market_cap": 1027952892,
   "rank": 66,
   "pair": "UUSDT",
   "exchange": "binance"
@@ -290,7 +290,7 @@
  {
   "symbol": "QNT",
   "name": "Quant",
-  "market_cap": 962805021,
+  "market_cap": 957721415,
   "rank": 70,
   "pair": "QNTUSDT",
   "exchange": "binance"
@@ -298,7 +298,7 @@
  {
   "symbol": "RENDER",
   "name": "Render",
-  "market_cap": 838340057,
+  "market_cap": 830494277,
   "rank": 74,
   "pair": "RENDERUSDT",
   "exchange": "binance"
@@ -306,47 +306,47 @@
  {
   "symbol": "ATOM",
   "name": "Cosmos Hub",
-  "market_cap": 828077417,
-  "rank": 77,
+  "market_cap": 825665087,
+  "rank": 76,
   "pair": "ATOMUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "POL",
   "name": "POL (ex-MATIC)",
-  "market_cap": 796828863,
-  "rank": 79,
+  "market_cap": 803995524,
+  "rank": 78,
   "pair": "POLUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "JST",
   "name": "JUST",
-  "market_cap": 796274175,
-  "rank": 80,
+  "market_cap": 798233933,
+  "rank": 79,
   "pair": "JSTUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "ALGO",
-  "name": "Algorand",
-  "market_cap": 791797424,
-  "rank": 81,
-  "pair": "ALGOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "JUP",
   "name": "Jupiter",
-  "market_cap": 788024889,
-  "rank": 82,
+  "market_cap": 790374087,
+  "rank": 80,
   "pair": "JUPUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "ALGO",
+  "name": "Algorand",
+  "market_cap": 779249589,
+  "rank": 82,
+  "pair": "ALGOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "NEXO",
   "name": "NEXO",
-  "market_cap": 761423521,
+  "market_cap": 742797861,
   "rank": 83,
   "pair": "NEXOUSDT",
   "exchange": "binance"
@@ -354,23 +354,23 @@
  {
   "symbol": "ENA",
   "name": "Ethena",
-  "market_cap": 751839097,
-  "rank": 84,
+  "market_cap": 728669955,
+  "rank": 85,
   "pair": "ENAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "\u5e01\u5b89\u4eba\u751f",
   "name": "\u5e01\u5b89\u4eba\u751f (BinanceLife)",
-  "market_cap": 720500756,
-  "rank": 89,
+  "market_cap": 716587273,
+  "rank": 88,
   "pair": "\u5e01\u5b89\u4eba\u751fUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "PUMP",
   "name": "Pump.fun",
-  "market_cap": 658153903,
+  "market_cap": 660349246,
   "rank": 92,
   "pair": "PUMPUSDT",
   "exchange": "binance"
@@ -378,7 +378,7 @@
  {
   "symbol": "FIL",
   "name": "Filecoin",
-  "market_cap": 631022688,
+  "market_cap": 621644497,
   "rank": 94,
   "pair": "FILUSDT",
   "exchange": "binance"
@@ -386,23 +386,23 @@
  {
   "symbol": "NIGHT",
   "name": "Midnight",
-  "market_cap": 567801536,
-  "rank": 97,
+  "market_cap": 559284890,
+  "rank": 98,
   "pair": "NIGHTUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "APT",
   "name": "Aptos",
-  "market_cap": 525890261,
-  "rank": 103,
+  "market_cap": 533305157,
+  "rank": 102,
   "pair": "APTUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ARB",
   "name": "Arbitrum",
-  "market_cap": 510631765,
+  "market_cap": 499784298,
   "rank": 105,
   "pair": "ARBUSDT",
   "exchange": "binance"
@@ -410,47 +410,47 @@
  {
   "symbol": "INJ",
   "name": "Injective",
-  "market_cap": 481523821,
-  "rank": 108,
+  "market_cap": 474625239,
+  "rank": 109,
   "pair": "INJUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "CAKE",
   "name": "PancakeSwap",
-  "market_cap": 464523465,
-  "rank": 109,
+  "market_cap": 457152010,
+  "rank": 110,
   "pair": "CAKEUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "DASH",
   "name": "Dash",
-  "market_cap": 449840227,
+  "market_cap": 447773652,
   "rank": 111,
   "pair": "DASHUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "PENGU",
-  "name": "Pudgy Penguins",
-  "market_cap": 426159736,
+  "symbol": "VET",
+  "name": "VeChain",
+  "market_cap": 415949862,
   "rank": 113,
-  "pair": "PENGUUSDT",
+  "pair": "VETUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "VET",
-  "name": "VeChain",
-  "market_cap": 425109807,
+  "symbol": "PENGU",
+  "name": "Pudgy Penguins",
+  "market_cap": 413662262,
   "rank": 114,
-  "pair": "VETUSDT",
+  "pair": "PENGUUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ETHFI",
   "name": "Ether.fi",
-  "market_cap": 402633672,
+  "market_cap": 401466890,
   "rank": 116,
   "pair": "ETHFIUSDT",
   "exchange": "binance"
@@ -458,79 +458,87 @@
  {
   "symbol": "TRUMP",
   "name": "Official Trump",
-  "market_cap": 402599811,
+  "market_cap": 393871240,
   "rank": 117,
   "pair": "TRUMPUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "BONK",
-  "name": "Bonk",
-  "market_cap": 390272726,
-  "rank": 119,
-  "pair": "BONKUSDT",
-  "exchange": "binance"
- },
- {
   "symbol": "JTO",
   "name": "Jito",
-  "market_cap": 388770093,
-  "rank": 120,
+  "market_cap": 384978359,
+  "rank": 119,
   "pair": "JTOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "FET",
   "name": "Artificial Superintelligence Alliance",
-  "market_cap": 385594680,
-  "rank": 121,
+  "market_cap": 375230164,
+  "rank": 120,
   "pair": "FETUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "VIRTUAL",
-  "name": "Virtuals Protocol",
-  "market_cap": 361176541,
-  "rank": 123,
-  "pair": "VIRTUALUSDT",
+  "symbol": "BONK",
+  "name": "Bonk",
+  "market_cap": 374058328,
+  "rank": 121,
+  "pair": "BONKUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "TIA",
   "name": "Celestia",
-  "market_cap": 360869897,
-  "rank": 124,
+  "market_cap": 362280850,
+  "rank": 122,
   "pair": "TIAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "PYTH",
   "name": "Pyth Network",
-  "market_cap": 354684923,
-  "rank": 125,
+  "market_cap": 359169354,
+  "rank": 123,
   "pair": "PYTHUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "LUNC",
-  "name": "Terra Luna Classic",
-  "market_cap": 343858113,
-  "rank": 128,
-  "pair": "LUNCUSDT",
+  "symbol": "VIRTUAL",
+  "name": "Virtuals Protocol",
+  "market_cap": 356643667,
+  "rank": 124,
+  "pair": "VIRTUALUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "ZRO",
+  "name": "LayerZero",
+  "market_cap": 352629276,
+  "rank": 126,
+  "pair": "ZROUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SUN",
   "name": "Sun Token",
-  "market_cap": 341923165,
-  "rank": 129,
+  "market_cap": 351887652,
+  "rank": 127,
   "pair": "SUNUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "LUNC",
+  "name": "Terra Luna Classic",
+  "market_cap": 340764629,
+  "rank": 129,
+  "pair": "LUNCUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SEI",
   "name": "Sei",
-  "market_cap": 340140370,
+  "market_cap": 335482383,
   "rank": 130,
   "pair": "SEIUSDT",
   "exchange": "binance"
@@ -538,71 +546,63 @@
  {
   "symbol": "CRV",
   "name": "Curve DAO",
-  "market_cap": 329924209,
-  "rank": 131,
+  "market_cap": 320523227,
+  "rank": 133,
   "pair": "CRVUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "STX",
   "name": "Stacks",
-  "market_cap": 316330274,
-  "rank": 134,
+  "market_cap": 307907885,
+  "rank": 135,
   "pair": "STXUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "KITE",
   "name": "Kite",
-  "market_cap": 289576522,
+  "market_cap": 285419519,
   "rank": 137,
   "pair": "KITEUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "XPL",
-  "name": "Plasma",
-  "market_cap": 285495014,
-  "rank": 138,
-  "pair": "XPLUSDT",
+  "symbol": "GNO",
+  "name": "Gnosis",
+  "market_cap": 277583567,
+  "rank": 139,
+  "pair": "GNOUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "GNO",
-  "name": "Gnosis",
-  "market_cap": 282097168,
+  "symbol": "XPL",
+  "name": "Plasma",
+  "market_cap": 276052051,
   "rank": 140,
-  "pair": "GNOUSDT",
+  "pair": "XPLUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "XTZ",
   "name": "Tezos",
-  "market_cap": 270718226,
+  "market_cap": 266488649,
   "rank": 141,
   "pair": "XTZUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "ZRO",
-  "name": "LayerZero",
-  "market_cap": 256212961,
-  "rank": 144,
-  "pair": "ZROUSDT",
-  "exchange": "binance"
- },
- {
   "symbol": "2Z",
   "name": "DoubleZero",
-  "market_cap": 254536994,
-  "rank": 145,
+  "market_cap": 252765749,
+  "rank": 146,
   "pair": "2ZUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "PENDLE",
   "name": "Pendle",
-  "market_cap": 246545802,
+  "market_cap": 251997291,
   "rank": 148,
   "pair": "PENDLEUSDT",
   "exchange": "binance"
@@ -610,7 +610,7 @@
  {
   "symbol": "LDO",
   "name": "Lido DAO",
-  "market_cap": 237177835,
+  "market_cap": 242284641,
   "rank": 150,
   "pair": "LDOUSDT",
   "exchange": "binance"
@@ -618,79 +618,79 @@
  {
   "symbol": "CFX",
   "name": "Conflux",
-  "market_cap": 233419416,
-  "rank": 152,
+  "market_cap": 228877674,
+  "rank": 154,
   "pair": "CFXUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "OP",
   "name": "Optimism",
-  "market_cap": 231796893,
-  "rank": 153,
+  "market_cap": 225826026,
+  "rank": 157,
   "pair": "OPUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "FLOKI",
-  "name": "FLOKI",
-  "market_cap": 226823450,
-  "rank": 156,
-  "pair": "FLOKIUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "JASMY",
   "name": "JasmyCoin",
-  "market_cap": 226153358,
-  "rank": 157,
+  "market_cap": 224811004,
+  "rank": 158,
   "pair": "JASMYUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "FLOKI",
+  "name": "FLOKI",
+  "market_cap": 222388615,
+  "rank": 159,
+  "pair": "FLOKIUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "STRK",
   "name": "Starknet",
-  "market_cap": 206485524,
+  "market_cap": 206336189,
   "rank": 165,
   "pair": "STRKUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "KAIA",
-  "name": "Kaia",
-  "market_cap": 205219215,
-  "rank": 166,
-  "pair": "KAIAUSDT",
-  "exchange": "binance"
- },
- {
   "symbol": "SYRUP",
   "name": "Maple Finance",
-  "market_cap": 204146501,
-  "rank": 167,
+  "market_cap": 204602812,
+  "rank": 166,
   "pair": "SYRUPUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "GRT",
-  "name": "The Graph",
-  "market_cap": 199125056,
-  "rank": 171,
-  "pair": "GRTUSDT",
+  "symbol": "KAIA",
+  "name": "Kaia",
+  "market_cap": 202319243,
+  "rank": 168,
+  "pair": "KAIAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "RAY",
   "name": "Raydium",
-  "market_cap": 198602977,
-  "rank": 172,
+  "market_cap": 196743631,
+  "rank": 171,
   "pair": "RAYUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "GRT",
+  "name": "The Graph",
+  "market_cap": 195198802,
+  "rank": 173,
+  "pair": "GRTUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "DCR",
   "name": "Decred",
-  "market_cap": 196214173,
+  "market_cap": 194751418,
   "rank": 174,
   "pair": "DCRUSDT",
   "exchange": "binance"
@@ -698,263 +698,263 @@
  {
   "symbol": "CHZ",
   "name": "Chiliz",
-  "market_cap": 188741542,
-  "rank": 177,
+  "market_cap": 186819842,
+  "rank": 179,
   "pair": "CHZUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "AXS",
-  "name": "Axie Infinity",
-  "market_cap": 176236420,
-  "rank": 182,
-  "pair": "AXSUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "FF",
   "name": "Falcon Finance",
-  "market_cap": 175158974,
-  "rank": 183,
+  "market_cap": 175293169,
+  "rank": 182,
   "pair": "FFUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "AXS",
+  "name": "Axie Infinity",
+  "market_cap": 174234190,
+  "rank": 183,
+  "pair": "AXSUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ENS",
   "name": "Ethereum Name Service",
-  "market_cap": 174531664,
-  "rank": 184,
+  "market_cap": 171193463,
+  "rank": 185,
   "pair": "ENSUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "WIF",
-  "name": "dogwifhat",
-  "market_cap": 171628790,
-  "rank": 186,
-  "pair": "WIFUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "IOTA",
-  "name": "IOTA",
-  "market_cap": 170984839,
-  "rank": 187,
-  "pair": "IOTAUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "EIGEN",
-  "name": "EigenCloud (prev. EigenLayer)",
-  "market_cap": 169136061,
-  "rank": 189,
-  "pair": "EIGENUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "COMP",
   "name": "Compound",
-  "market_cap": 168787663,
-  "rank": 190,
+  "market_cap": 168388166,
+  "rank": 188,
   "pair": "COMPUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "WIF",
+  "name": "dogwifhat",
+  "market_cap": 167761954,
+  "rank": 190,
+  "pair": "WIFUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "EIGEN",
+  "name": "EigenCloud (prev. EigenLayer)",
+  "market_cap": 166634378,
+  "rank": 192,
+  "pair": "EIGENUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "IOTA",
+  "name": "IOTA",
+  "market_cap": 165827671,
+  "rank": 193,
+  "pair": "IOTAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "KAITO",
   "name": "KAITO",
-  "market_cap": 151533850,
+  "market_cap": 149622482,
   "rank": 203,
   "pair": "KAITOUSDT",
   "exchange": "binance"
  },
  {
+  "symbol": "TWT",
+  "name": "Trust Wallet",
+  "market_cap": 142858151,
+  "rank": 208,
+  "pair": "TWTUSDT",
+  "exchange": "binance"
+ },
+ {
   "symbol": "THETA",
   "name": "Theta Network",
-  "market_cap": 144559102,
+  "market_cap": 141664861,
   "rank": 209,
   "pair": "THETAUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "TWT",
-  "name": "Trust Wallet",
-  "market_cap": 142871910,
-  "rank": 211,
-  "pair": "TWTUSDT",
+  "symbol": "RIF",
+  "name": "Rootstock Infrastructure Framework",
+  "market_cap": 140743557,
+  "rank": 212,
+  "pair": "RIFUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "NEO",
   "name": "NEO",
-  "market_cap": 140796493,
-  "rank": 212,
+  "market_cap": 138851765,
+  "rank": 215,
   "pair": "NEOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "APE",
   "name": "ApeCoin",
-  "market_cap": 137701156,
-  "rank": 213,
+  "market_cap": 137173101,
+  "rank": 217,
   "pair": "APEUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "RUNE",
-  "name": "THORChain",
-  "market_cap": 136289689,
-  "rank": 215,
-  "pair": "RUNEUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "MANA",
   "name": "Decentraland",
-  "market_cap": 136283702,
+  "market_cap": 136877587,
   "rank": 216,
   "pair": "MANAUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "SAND",
-  "name": "The Sandbox",
-  "market_cap": 134105657,
-  "rank": 219,
-  "pair": "SANDUSDT",
+  "symbol": "RUNE",
+  "name": "THORChain",
+  "market_cap": 134851368,
+  "rank": 220,
+  "pair": "RUNEUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "BAT",
-  "name": "Basic Attention",
-  "market_cap": 132824174,
-  "rank": 222,
-  "pair": "BATUSDT",
+  "symbol": "SAND",
+  "name": "The Sandbox",
+  "market_cap": 132294647,
+  "rank": 223,
+  "pair": "SANDUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "AR",
   "name": "Arweave",
-  "market_cap": 132676247,
-  "rank": 223,
+  "market_cap": 130745022,
+  "rank": 224,
   "pair": "ARUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "RIF",
-  "name": "Rootstock Infrastructure Framework",
-  "market_cap": 129528612,
-  "rank": 225,
-  "pair": "RIFUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SNX",
   "name": "Synthetix",
-  "market_cap": 129241633,
-  "rank": 226,
+  "market_cap": 130437288,
+  "rank": 225,
   "pair": "SNXUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "BAT",
+  "name": "Basic Attention",
+  "market_cap": 130257904,
+  "rank": 226,
+  "pair": "BATUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "GENIUS",
   "name": "Genius",
-  "market_cap": 126662487,
-  "rank": 228,
+  "market_cap": 127247057,
+  "rank": 227,
   "pair": "GENIUSUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "A",
   "name": "Vaulta",
-  "market_cap": 122135171,
-  "rank": 234,
+  "market_cap": 123801204,
+  "rank": 232,
   "pair": "AUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "IMX",
   "name": "Immutable",
-  "market_cap": 121579412,
-  "rank": 235,
+  "market_cap": 116845154,
+  "rank": 238,
   "pair": "IMXUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "CVX",
-  "name": "Convex Finance",
-  "market_cap": 119260977,
-  "rank": 237,
-  "pair": "CVXUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "SFP",
-  "name": "SafePal",
-  "market_cap": 113161121,
-  "rank": 243,
-  "pair": "SFPUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "AWE",
-  "name": "AWE Network",
-  "market_cap": 109812689,
-  "rank": 251,
-  "pair": "AWEUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "GALA",
-  "name": "GALA",
-  "market_cap": 109414503,
-  "rank": 252,
-  "pair": "GALAUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "DYDX",
-  "name": "dYdX",
-  "market_cap": 109242243,
-  "rank": 253,
-  "pair": "DYDXUSDT",
+  "symbol": "RE",
+  "name": "RE",
+  "market_cap": 114594966,
+  "rank": 241,
+  "pair": "REUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ZK",
   "name": "ZKsync",
-  "market_cap": 107909793,
-  "rank": 258,
+  "market_cap": 114443117,
+  "rank": 243,
   "pair": "ZKUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "CVX",
+  "name": "Convex Finance",
+  "market_cap": 113172932,
+  "rank": 246,
+  "pair": "CVXUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "AWE",
+  "name": "AWE Network",
+  "market_cap": 112559403,
+  "rank": 248,
+  "pair": "AWEUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "SFP",
+  "name": "SafePal",
+  "market_cap": 112214143,
+  "rank": 249,
+  "pair": "SFPUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "DYDX",
+  "name": "dYdX",
+  "market_cap": 108595122,
+  "rank": 255,
+  "pair": "DYDXUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "GALA",
+  "name": "GALA",
+  "market_cap": 107962873,
+  "rank": 257,
+  "pair": "GALAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SENT",
   "name": "Sentient",
-  "market_cap": 107897282,
-  "rank": 257,
+  "market_cap": 106240262,
+  "rank": 260,
   "pair": "SENTUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "XEC",
   "name": "eCash",
-  "market_cap": 106601364,
-  "rank": 261,
-  "pair": "XECUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "RE",
-  "name": "RE",
-  "market_cap": 104603376,
+  "market_cap": 104773993,
   "rank": 265,
-  "pair": "REUSDT",
+  "pair": "XECUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ALLO",
   "name": "Allora",
-  "market_cap": 102663471,
+  "market_cap": 101598336,
   "rank": 269,
   "pair": "ALLOUSDT",
   "exchange": "binance"
@@ -962,519 +962,519 @@
  {
   "symbol": "1INCH",
   "name": "1INCH",
-  "market_cap": 102020223,
+  "market_cap": 100705370,
   "rank": 271,
   "pair": "1INCHUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "GLM",
-  "name": "Golem",
-  "market_cap": 101804753,
-  "rank": 273,
-  "pair": "GLMUSDT",
-  "exchange": "binance"
- },
- {
   "symbol": "S",
   "name": "Sonic",
-  "market_cap": 100750800,
+  "market_cap": 99186378,
   "rank": 276,
   "pair": "SUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "KMNO",
-  "name": "Kamino",
-  "market_cap": 96738236,
-  "rank": 282,
-  "pair": "KMNOUSDT",
+  "symbol": "GLM",
+  "name": "Golem",
+  "market_cap": 98812642,
+  "rank": 277,
+  "pair": "GLMUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "YFI",
-  "name": "yearn.finance",
-  "market_cap": 96272203,
-  "rank": 286,
-  "pair": "YFIUSDT",
+  "symbol": "KMNO",
+  "name": "Kamino",
+  "market_cap": 94063507,
+  "rank": 285,
+  "pair": "KMNOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "MET",
   "name": "Meteora",
-  "market_cap": 92078196,
-  "rank": 288,
+  "market_cap": 88399420,
+  "rank": 292,
   "pair": "METUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SPCXB",
   "name": "SpaceX (bStocks Tokenized Stock)",
-  "market_cap": 91680531,
-  "rank": 289,
+  "market_cap": 85903029,
+  "rank": 296,
   "pair": "SPCXBUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "EGLD",
-  "name": "MultiversX",
-  "market_cap": 87245746,
-  "rank": 294,
-  "pair": "EGLDUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "BANANAS31",
   "name": "Banana For Scale",
-  "market_cap": 86942921,
+  "market_cap": 85666786,
   "rank": 295,
   "pair": "BANANAS31USDT",
   "exchange": "binance"
  },
  {
-  "symbol": "COW",
-  "name": "CoW Protocol",
-  "market_cap": 84563882,
-  "rank": 299,
-  "pair": "COWUSDT",
+  "symbol": "EGLD",
+  "name": "MultiversX",
+  "market_cap": 85311036,
+  "rank": 297,
+  "pair": "EGLDUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "FORM",
-  "name": "Four",
-  "market_cap": 82671840,
-  "rank": 306,
-  "pair": "FORMUSDT",
+  "symbol": "YFI",
+  "name": "yearn.finance",
+  "market_cap": 83853510,
+  "rank": 300,
+  "pair": "YFIUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "COW",
+  "name": "CoW Protocol",
+  "market_cap": 82873851,
+  "rank": 302,
+  "pair": "COWUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "WAL",
   "name": "Walrus",
-  "market_cap": 82384366,
-  "rank": 307,
+  "market_cap": 80890713,
+  "rank": 306,
   "pair": "WALUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "SYN",
-  "name": "Synapse",
-  "market_cap": 82043201,
-  "rank": 308,
-  "pair": "SYNUSDT",
+  "symbol": "FORM",
+  "name": "Four",
+  "market_cap": 80813148,
+  "rank": 307,
+  "pair": "FORMUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "LPT",
   "name": "Livepeer",
-  "market_cap": 80397485,
-  "rank": 311,
+  "market_cap": 78535753,
+  "rank": 314,
   "pair": "LPTUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "ARKM",
-  "name": "Arkham",
-  "market_cap": 77700726,
-  "rank": 317,
-  "pair": "ARKMUSDT",
+  "symbol": "SYN",
+  "name": "Synapse",
+  "market_cap": 77664616,
+  "rank": 315,
+  "pair": "SYNUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "ORCA",
+  "name": "Orca",
+  "market_cap": 76609010,
+  "rank": 321,
+  "pair": "ORCAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "NXPC",
   "name": "Nexpace",
-  "market_cap": 77596817,
-  "rank": 318,
+  "market_cap": 75978450,
+  "rank": 324,
   "pair": "NXPCUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ZEN",
   "name": "Horizen",
-  "market_cap": 77172576,
-  "rank": 320,
+  "market_cap": 75920707,
+  "rank": 323,
   "pair": "ZENUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "ZAMA",
-  "name": "Zama",
-  "market_cap": 76639191,
-  "rank": 322,
-  "pair": "ZAMAUSDT",
+  "symbol": "ARKM",
+  "name": "Arkham",
+  "market_cap": 75587191,
+  "rank": 326,
+  "pair": "ARKMUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "RSR",
   "name": "Reserve Rights",
-  "market_cap": 76417964,
-  "rank": 323,
+  "market_cap": 75578207,
+  "rank": 327,
   "pair": "RSRUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "ORCA",
-  "name": "Orca",
-  "market_cap": 75707968,
-  "rank": 325,
-  "pair": "ORCAUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "CFG",
-  "name": "Centrifuge",
-  "market_cap": 75585275,
-  "rank": 327,
-  "pair": "CFGUSDT",
+  "symbol": "ZAMA",
+  "name": "Zama",
+  "market_cap": 74209389,
+  "rank": 334,
+  "pair": "ZAMAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "QTUM",
   "name": "Qtum",
-  "market_cap": 75168458,
-  "rank": 330,
+  "market_cap": 73944114,
+  "rank": 336,
   "pair": "QTUMUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "ZRX",
-  "name": "0x Protocol",
-  "market_cap": 75051738,
-  "rank": 329,
-  "pair": "ZRXUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ORDI",
   "name": "ORDI",
-  "market_cap": 73478817,
-  "rank": 339,
+  "market_cap": 73872922,
+  "rank": 335,
   "pair": "ORDIUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "CFG",
+  "name": "Centrifuge",
+  "market_cap": 73616096,
+  "rank": 337,
+  "pair": "CFGUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "ZRX",
+  "name": "0x Protocol",
+  "market_cap": 73477865,
+  "rank": 338,
+  "pair": "ZRXUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "BLUR",
+  "name": "Blur",
+  "market_cap": 73295695,
+  "rank": 349,
+  "pair": "BLURUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "CHIP",
+  "name": "USD.AI",
+  "market_cap": 71137326,
+  "rank": 339,
+  "pair": "CHIPUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "GAS",
   "name": "Gas",
-  "market_cap": 70542135,
-  "rank": 352,
+  "market_cap": 69205339,
+  "rank": 357,
   "pair": "GASUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "NMR",
   "name": "Numeraire",
-  "market_cap": 69863950,
+  "market_cap": 68974296,
   "rank": 354,
   "pair": "NMRUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "MINA",
-  "name": "Mina Protocol",
-  "market_cap": 65568749,
-  "rank": 367,
-  "pair": "MINAUSDT",
+  "symbol": "BIO",
+  "name": "Bio Protocol",
+  "market_cap": 65612262,
+  "rank": 366,
+  "pair": "BIOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "IO",
   "name": "io.net",
-  "market_cap": 64957210,
-  "rank": 369,
+  "market_cap": 64477885,
+  "rank": 370,
   "pair": "IOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "PLUME",
   "name": "Plume",
-  "market_cap": 64876535,
-  "rank": 370,
+  "market_cap": 63561734,
+  "rank": 372,
   "pair": "PLUMEUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "CHIP",
-  "name": "USD.AI",
-  "market_cap": 64768318,
-  "rank": 371,
-  "pair": "CHIPUSDT",
+  "symbol": "MINA",
+  "name": "Mina Protocol",
+  "market_cap": 63533221,
+  "rank": 373,
+  "pair": "MINAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "KSM",
   "name": "Kusama",
-  "market_cap": 63935320,
-  "rank": 374,
+  "market_cap": 62421651,
+  "rank": 380,
   "pair": "KSMUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "BERA",
-  "name": "Berachain",
-  "market_cap": 63477563,
-  "rank": 376,
-  "pair": "BERAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "W",
   "name": "Wormhole",
-  "market_cap": 63476575,
-  "rank": 375,
+  "market_cap": 62417302,
+  "rank": 378,
   "pair": "WUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "BIO",
-  "name": "Bio Protocol",
-  "market_cap": 63089937,
-  "rank": 380,
-  "pair": "BIOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "RVN",
   "name": "Ravencoin",
-  "market_cap": 62907830,
-  "rank": 381,
+  "market_cap": 61659141,
+  "rank": 382,
   "pair": "RVNUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "HOT",
-  "name": "Holo",
-  "market_cap": 62198014,
-  "rank": 384,
-  "pair": "HOTUSDT",
+  "symbol": "ENJ",
+  "name": "Enjin Coin",
+  "market_cap": 61612329,
+  "rank": 389,
+  "pair": "ENJUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "GMX",
   "name": "GMX",
-  "market_cap": 61864574,
-  "rank": 385,
+  "market_cap": 61567791,
+  "rank": 383,
   "pair": "GMXUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "HOT",
+  "name": "Holo",
+  "market_cap": 61311802,
+  "rank": 385,
+  "pair": "HOTUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "BERA",
+  "name": "Berachain",
+  "market_cap": 61237923,
+  "rank": 386,
+  "pair": "BERAUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "TURBO",
   "name": "Turbo",
-  "market_cap": 61771137,
-  "rank": 386,
+  "market_cap": 61035979,
+  "rank": 387,
   "pair": "TURBOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "HOME",
   "name": "HOME",
-  "market_cap": 61743094,
-  "rank": 387,
+  "market_cap": 60481599,
+  "rank": 392,
   "pair": "HOMEUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "BLUR",
-  "name": "Blur",
-  "market_cap": 60622655,
-  "rank": 391,
-  "pair": "BLURUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "ZIL",
-  "name": "Zilliqa",
-  "market_cap": 60480378,
-  "rank": 393,
-  "pair": "ZILUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "LINEA",
   "name": "Linea",
-  "market_cap": 60409594,
-  "rank": 394,
+  "market_cap": 59675364,
+  "rank": 397,
   "pair": "LINEAUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "ZIL",
+  "name": "Zilliqa",
+  "market_cap": 59478420,
+  "rank": 398,
+  "pair": "ZILUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "TFUEL",
   "name": "Theta Fuel",
-  "market_cap": 59456282,
-  "rank": 400,
+  "market_cap": 58331396,
+  "rank": 401,
   "pair": "TFUELUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "ENJ",
-  "name": "Enjin Coin",
-  "market_cap": 58412924,
-  "rank": 401,
-  "pair": "ENJUSDT",
+  "symbol": "MUB",
+  "name": "Micron Technology (bStocks Tokenized Stock)",
+  "market_cap": 56787881,
+  "rank": 406,
+  "pair": "MUBUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "SUPER",
   "name": "SuperVerse",
-  "market_cap": 57223197,
-  "rank": 407,
+  "market_cap": 56468723,
+  "rank": 409,
   "pair": "SUPERUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "MEGA",
   "name": "MegaETH",
-  "market_cap": 56048537,
-  "rank": 412,
+  "market_cap": 56181487,
+  "rank": 410,
   "pair": "MEGAUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "MUB",
-  "name": "Micron Technology (bStocks Tokenized Stock)",
-  "market_cap": 55286817,
-  "rank": 415,
-  "pair": "MUBUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "SPK",
-  "name": "Spark",
-  "market_cap": 55041074,
-  "rank": 416,
-  "pair": "SPKUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "BABY",
   "name": "Babylon",
-  "market_cap": 54363294,
-  "rank": 418,
+  "market_cap": 55867859,
+  "rank": 412,
   "pair": "BABYUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "SPK",
+  "name": "Spark",
+  "market_cap": 54124788,
+  "rank": 421,
+  "pair": "SPKUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "AXL",
   "name": "Axelar",
-  "market_cap": 51994472,
-  "rank": 431,
+  "market_cap": 51737965,
+  "rank": 430,
   "pair": "AXLUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "MOVE",
-  "name": "Movement",
-  "market_cap": 50518129,
-  "rank": 444,
-  "pair": "MOVEUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "HOLO",
-  "name": "Holoworld",
-  "market_cap": 50486123,
-  "rank": 443,
-  "pair": "HOLOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "XUSD",
   "name": "StraitsX XUSD",
-  "market_cap": 49460496,
-  "rank": 450,
+  "market_cap": 49542960,
+  "rank": 448,
   "pair": "XUSDUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "POLYX",
-  "name": "Polymesh",
-  "market_cap": 49263615,
-  "rank": 454,
-  "pair": "POLYXUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "TRB",
-  "name": "Tellor Tributes",
-  "market_cap": 48695403,
-  "rank": 457,
-  "pair": "TRBUSDT",
+  "symbol": "MOVE",
+  "name": "Movement",
+  "market_cap": 48993018,
+  "rank": 451,
+  "pair": "MOVEUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "KAVA",
   "name": "Kava",
-  "market_cap": 48653907,
-  "rank": 458,
+  "market_cap": 48952225,
+  "rank": 452,
   "pair": "KAVAUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "HOLO",
+  "name": "Holoworld",
+  "market_cap": 48631691,
+  "rank": 454,
+  "pair": "HOLOUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "POLYX",
+  "name": "Polymesh",
+  "market_cap": 48625243,
+  "rank": 456,
+  "pair": "POLYXUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "SNDKB",
+  "name": "SanDisk (bStocks Tokenized Stock)",
+  "market_cap": 47396199,
+  "rank": 460,
+  "pair": "SNDKBUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "TRB",
+  "name": "Tellor Tributes",
+  "market_cap": 47294352,
+  "rank": 462,
+  "pair": "TRBUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ROSE",
   "name": "Oasis",
-  "market_cap": 47848396,
-  "rank": 465,
+  "market_cap": 46678169,
+  "rank": 468,
   "pair": "ROSEUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "FLOW",
   "name": "Flow",
-  "market_cap": 47019288,
+  "market_cap": 46458253,
   "rank": 471,
   "pair": "FLOWUSDT",
   "exchange": "binance"
  },
  {
-  "symbol": "DGB",
-  "name": "DigiByte",
-  "market_cap": 46970608,
-  "rank": 472,
-  "pair": "DGBUSDT",
-  "exchange": "binance"
- },
- {
   "symbol": "ONT",
   "name": "Ontology",
-  "market_cap": 46566903,
+  "market_cap": 45779808,
   "rank": 477,
   "pair": "ONTUSDT",
   "exchange": "binance"
  },
  {
+  "symbol": "DGB",
+  "name": "DigiByte",
+  "market_cap": 45457597,
+  "rank": 482,
+  "pair": "DGBUSDT",
+  "exchange": "binance"
+ },
+ {
   "symbol": "DUSK",
   "name": "DUSK",
-  "market_cap": 46504596,
-  "rank": 478,
+  "market_cap": 45457583,
+  "rank": 479,
   "pair": "DUSKUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "CKB",
   "name": "Nervos Network",
-  "market_cap": 46314300,
-  "rank": 479,
+  "market_cap": 45035561,
+  "rank": 485,
   "pair": "CKBUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "RED",
-  "name": "RedStone",
-  "market_cap": 46031793,
-  "rank": 482,
-  "pair": "REDUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "ASTR",
   "name": "Astar",
-  "market_cap": 45739324,
-  "rank": 485,
+  "market_cap": 45014797,
+  "rank": 484,
   "pair": "ASTRUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "PNUT",
   "name": "Peanut the Squirrel",
-  "market_cap": 45486225,
+  "market_cap": 44459285,
   "rank": 487,
   "pair": "PNUTUSDT",
   "exchange": "binance"
@@ -1482,40 +1482,48 @@
  {
   "symbol": "SUSHI",
   "name": "Sushi",
-  "market_cap": 45337652,
-  "rank": 488,
+  "market_cap": 44194860,
+  "rank": 489,
   "pair": "SUSHIUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "RED",
+  "name": "RedStone",
+  "market_cap": 43973777,
+  "rank": 492,
+  "pair": "REDUSDT",
+  "exchange": "binance"
+ },
+ {
+  "symbol": "XNO",
+  "name": "Nano",
+  "market_cap": 43852896,
+  "rank": 493,
+  "pair": "XNOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "0G",
   "name": "0G",
-  "market_cap": 44961234,
-  "rank": 490,
+  "market_cap": 43785253,
+  "rank": 494,
   "pair": "0GUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "BARD",
   "name": "Lombard",
-  "market_cap": 44547761,
-  "rank": 493,
+  "market_cap": 43388417,
+  "rank": 496,
   "pair": "BARDUSDT",
-  "exchange": "binance"
- },
- {
-  "symbol": "XNO",
-  "name": "Nano",
-  "market_cap": 44514674,
-  "rank": 492,
-  "pair": "XNOUSDT",
   "exchange": "binance"
  },
  {
   "symbol": "XVS",
   "name": "Venus",
-  "market_cap": 43845573,
-  "rank": 498,
+  "market_cap": 43059998,
+  "rank": 500,
   "pair": "XVSUSDT",
   "exchange": "binance"
  }

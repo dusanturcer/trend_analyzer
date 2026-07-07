@@ -1,0 +1,4 @@
+grade,coin,pair,rank,max_z_24h,spike_h_ago,move_3h,silent,usd_per_h,rsi14,dist_30d_high,obv_chg_pctl,bbw_pctl
+z2 watch,CHIP,CHIPUSDT,371,2.66,2,-1.0%,True,102k,61.0,-18%,96.0,98.0
+z2 watch,SEI,SEIUSDT,130,2.46,11,+0.5%,True,104k,50.0,-16%,80.0,30.0
+z2 watch,FIL,FILUSDT,94,2.0,18,+0.1%,True,189k,47.0,-6%,28.0,31.0

@@ -53,13 +53,16 @@ def main():
         df = F.add_baselines(df)
         win = df.iloc[-W:]
         max_z = float(win["vol_z"].max())
-        if max_z < C.SCREENER_MIN_Z:
+        if max_z < 2.0:              # weaker spikes shown as watch-only
             continue
         price_move = float(df["close"].iloc[-1] / df["close"].iloc[-(W + 1)] - 1)
         silent = abs(price_move) < C.SCREENER_SILENT_MAX_MOVE
         spike_pos = int(win["vol_z"].idxmax())
         hours_ago = len(df) - 1 - spike_pos
+        grade = ("z4 TRADE" if max_z >= 4 else
+                 "z3 watch" if max_z >= 3 else "z2 watch")
         rows.append({
+            "grade": grade,
             "coin": c["symbol"], "pair": c["pair"], "rank": c["rank"],
             "max_vol_z": round(max_z, 2),
             "spike_hours_ago": hours_ago,
@@ -71,17 +74,16 @@ def main():
         })
 
     if not rows:
-        print(f"\nNo coin currently shows a z>={C.SCREENER_MIN_Z} spike. "
-              "Quiet market — re-run later.")
+        print("\nNo coin currently shows a z>=2 spike. Quiet market.")
         return
     out = (pd.DataFrame(rows)
-           .sort_values(["silent", "max_vol_z"], ascending=[False, False])
+           .sort_values("max_vol_z", ascending=False)
            .head(C.SCREENER_TOP_N))
-    n_silent = int(out["silent"].sum())
-    print(f"\n=== Watchlist: {len(out)} spikes, {n_silent} silent "
-          f"(the studied precursor) ===")
-    print("(silent=True + high max_vol_z = the profile with ~3-4x "
-          "historical lift)\n")
+    n_trade = int(((out["grade"] == "z4 TRADE") & out["silent"]).sum())
+    print(f"\n=== Watchlist: {len(out)} spikes, "
+          f"{n_trade} tradeable (z>=4 & silent) ===")
+    print("(z2/z3 = watch-only: historical hit ~9-12% vs ~18% for z4+, "
+          "and z3 was not profitable after costs)\n")
     print(out.to_string(index=False))
     out.to_csv(C.OUT_DIR / "screener_watchlist.csv", index=False)
     print(f"\nSaved to {C.OUT_DIR / 'screener_watchlist.csv'}")

@@ -44,13 +44,18 @@ def main():
         df = add_indicators(F.add_baselines(df))
         win = df.iloc[-24:]
         max_z = float(win["vol_z"].max())
-        if max_z < E.MIN_Z:
+        if max_z < 2.0:            # show weaker spikes too (watch-only)
             continue
         move3h = float(df["close"].iloc[-1] / df["close"].iloc[-4] - 1)
         last = df.iloc[-1]
+        spike_ago = len(df) - 1 - int(win["vol_z"].idxmax())
+        grade = ("z4 TRADE" if max_z >= 4 else
+                 "z3 watch" if max_z >= 3 else "z2 watch")
         rows.append({
+            "grade": grade,
             "coin": c["symbol"], "pair": c["pair"], "rank": c["rank"],
             "max_z_24h": round(max_z, 2),
+            "spike_h_ago": spike_ago,
             "move_3h": f"{move3h:+.1%}",
             "silent": abs(move3h) < E.SILENT_MAX_MOVE_3H,
             "usd_per_h": f"{liq/1000:,.0f}k",
@@ -61,17 +66,21 @@ def main():
         })
 
     if not rows:
-        print("\nNo E-combo candidates right now. That's normal - "
-              "z>=4 signals are rare (~1-2 per week across the universe).")
+        print("\nNo volume spikes (z>=2) anywhere right now. Quiet market.")
         return
     out = pd.DataFrame(rows).sort_values(
-        ["silent", "max_z_24h"], ascending=[False, False])
-    print(f"\n=== E-combo watchlist ({int(out['silent'].sum())} silent) ===\n")
+        ["max_z_24h"], ascending=False)
+    tradeable = out[(out["grade"] == "z4 TRADE") & out["silent"]]
+    print(f"\n=== E-combo screen: {len(tradeable)} tradeable (z>=4 & silent), "
+          f"{len(out)} spikes total ===\n")
     print(out.to_string(index=False))
     out.to_csv(E.OUT_DIR / "e_watchlist.csv", index=False)
     print(f"\nSaved to {E.OUT_DIR / 'e_watchlist.csv'}")
-    print("Historical: ~59% win rate, +1.1% EV/trade (2 of 3 periods "
-          "positive, small sample). Paper trade first. Not financial advice.")
+    print("\nONLY 'z4 TRADE' + silent=True rows meet the validated strategy "
+          "(3y: 64% win, +1.6%/trade).")
+    print("z2/z3 rows are for observation only - historical hit rates were "
+          "~9% (z2-3) and ~12% (z3-4) vs 18% (z4+), and the z3 backtest "
+          "variant was NOT profitable after costs.")
 
 
 if __name__ == "__main__":
