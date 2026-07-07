@@ -201,7 +201,17 @@ def main():
             try:
                 old = pd.read_parquet(path)
                 t0, t1 = old["open_time"].min(), old["open_time"].max()
-                if t0 <= start + timedelta(days=7):
+                covered = t0 <= start + timedelta(days=7)
+                if not covered and c["exchange"] == "binance":
+                    # cache starts "late" - maybe the coin is just young.
+                    # Probe: does the exchange have anything earlier?
+                    probe = get(f"{C.BINANCE_BASE}/api/v3/klines",
+                                {"symbol": c["pair"], "interval": C.INTERVAL,
+                                 "startTime": start_ms, "limit": 1})
+                    covered = (bool(probe) and probe[0][0]
+                               >= int(t0.timestamp() * 1000) - 3_600_000)
+                    time.sleep(C.REQUEST_SLEEP)
+                if covered:
                     # window start covered -> incremental top-up only
                     gap_ms = int(t1.timestamp() * 1000)  # refetch last bar
                     if gap_ms >= end_ms - 3_600_000:

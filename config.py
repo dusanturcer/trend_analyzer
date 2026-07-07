@@ -1,5 +1,14 @@
 """Central configuration for the crypto pump analyzer."""
+import sys
 from pathlib import Path
+
+# Windows consoles default to cp1252, which can't print some coin names
+# (e.g. Chinese memecoins). Force UTF-8 with safe fallback.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
 
 # ---------------------------------------------------------------- paths
 ROOT = Path(__file__).parent
