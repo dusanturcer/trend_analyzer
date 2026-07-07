@@ -22,7 +22,7 @@ EXCLUDE_SYMBOLS = {
 
 # ---------------------------------------------------------------- data window
 INTERVAL = "1h"
-LOOKBACK_DAYS = 550                      # ~18 months (regime-robustness check)
+LOOKBACK_DAYS = 1100                      # ~18 months (regime-robustness check)
 BINANCE_BASE = "https://api.binance.com"
 OKX_BASE = "https://www.okx.com"
 COINGECKO_BASE = "https://api.coingecko.com/api/v3"
