@@ -29,14 +29,21 @@ dozens of times — a machine signature humans don't produce.
 | `whale_trades.py PAIR` | Live drill-down: individual prints ≥ $25k in the last 6h, net whale flow, TWAP/iceberg detection |
 | `wconfig.py` | All thresholds |
 
-## Validated strategy (W, backtest variant C)
+## Validated strategy (W, live rules = variant D)
 
-Enter on a fresh absorb≥80 crossing, hold 7 days flat, sell. No stop, no TP.
-18-month+ backtest (905 trades): **+3.1%/trade, +2.9% excess over random
-entries, positive excess in 5 of 6 half-years.** Known weakness: when BTC
-trades below its 100d MA (2025-H1), absorption entries underperformed even
-random ones — the screener shows a regime banner for exactly this.
-~6 positions open on average; budget ~6–8 stakes of capital.
+Enter on a fresh absorb≥80 crossing, hold 7 days, sell. No TP, no tight
+stop — but a **−25% disaster stop** as tail insurance (3y sweep: fires on
+~5% of trades, costs ~0.26%/trade, caps the worst trade at −25% vs −38%
+observed, and bounds unobserved catastrophes like hacks/delistings).
+
+3-year backtest (905 trades): **without stop +3.1%/trade, with the −25%
+stop +2.8%/trade** — both ~+2.6–2.9% excess over random entries, positive
+excess in 5 of 6 half-years. Tight stops (−5..−12%) destroy the edge
+(see `../experiments/stop_sweep.py`); the wide stop barely touches it.
+
+Known weakness: when BTC trades below its 100d MA (2025-H1), absorption
+entries underperformed even random ones — the screener shows a regime
+banner for exactly this. ~6 positions open on average; budget ~6–8 stakes.
 
 ## Daily routine
 

@@ -43,3 +43,9 @@ TWAP_SIZE_TOL = 0.02       # sizes within 2% count as "identical"
 # ---- validation ----
 FWD_HORIZON_H = 168        # does accumulation predict the NEXT 7 days?
 FWD_GOOD_RET = 0.10        # "payoff" = >= +10% within horizon
+
+# ---- W strategy (live rules) ----
+# Disaster stop: NOT an edge decision, a tail-insurance decision.
+# Sweep (stop_sweep.py): costs ~0.26%/trade, fires on ~5% of trades,
+# caps worst observed -37.8% at -25.2%, win rate unchanged (48%).
+DISASTER_STOP = -0.25

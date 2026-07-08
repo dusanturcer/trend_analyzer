@@ -77,18 +77,29 @@ def main():
             stale += 1
             continue
         df = add_accumulation(df)
-        hot = (df["absorb"] >= W.SCORE_ALERT).fillna(False).to_numpy()
-        cross = hot & ~np.concatenate(([False], hot[:-1]))
-        recent = np.flatnonzero(cross[-FRESH_CROSS_H:])
-        if not len(recent):
-            continue
-        i = len(df) - FRESH_CROSS_H + int(recent[-1])
         last = df.iloc[-1]
+        absorb_now = (float(last["absorb"])
+                      if np.isfinite(last["absorb"]) else np.nan)
+
+        # most recent >= 80 crossing (any age within the cache)
+        hot = (df["absorb"] >= W.SCORE_ALERT).fillna(False).to_numpy()
+        cross = np.flatnonzero(hot & ~np.concatenate(([False], hot[:-1])))
+        crossed_h_ago = int(len(df) - 1 - cross[-1]) if len(cross) else None
+        fresh = crossed_h_ago is not None and crossed_h_ago <= FRESH_CROSS_H
+
+        if not fresh and not (absorb_now == absorb_now and absorb_now >= 50):
+            continue
+
+        grade = ("TRADE" if fresh else
+                 "80+ old" if absorb_now >= W.SCORE_ALERT else "watch")
         rows.append({
+            "grade": grade,
             "coin": meta["symbol"], "pair": path.stem, "rank": meta["rank"],
-            "crossed_h_ago": len(df) - 1 - i,
-            "absorb_now": round(float(last["absorb"]), 1)
-                          if np.isfinite(last["absorb"]) else None,
+            "absorb_now": round(absorb_now, 1) if absorb_now == absorb_now
+                          else None,
+            "crossed_h_ago": crossed_h_ago
+                             if crossed_h_ago is not None
+                             and crossed_h_ago <= 24 * 14 else None,
             "clip": round(float(last["clip"]), 0),
             "ret_72h": f"{float(df['close'].iloc[-1] / df['close'].iloc[-W.ACC_WINDOW_H] - 1):+.1%}",
             "usd_per_h": f"{float(df['quote_volume'].tail(720).median())/1000:,.0f}k",
@@ -98,19 +109,29 @@ def main():
         print(f"NOTE: {stale} coins skipped as stale - run the parent "
               "fetch_data.py first for a complete scan.")
     if not rows:
-        print("\nNo fresh absorption crossings. Historically ~1 per day "
-              "across the universe, so empty days are normal.")
+        print("\nNothing at absorb >= 50 right now. Quiet tape.")
         return
-    out = pd.DataFrame(rows).sort_values("crossed_h_ago")
-    print(f"\n=== W watchlist: {len(out)} fresh crossings ===\n")
+    order = {"TRADE": 0, "80+ old": 1, "watch": 2}
+    out = (pd.DataFrame(rows)
+           .assign(_o=lambda d: d["grade"].map(order))
+           .sort_values(["_o", "absorb_now"], ascending=[True, False])
+           .drop(columns="_o"))
+    n_trade = int((out["grade"] == "TRADE").sum())
+    print(f"\n=== W screen: {n_trade} TRADE signals, "
+          f"{len(out)} coins at absorb >= 50 ===")
+    print("(TRADE = fresh >=80 crossing, the backtested entry. "
+          "'80+ old' = crossed earlier - entering late is UNTESTED. "
+          "'watch' = 50-79, building.)\n")
     print(out.to_string(index=False))
     out.to_csv(W.OUT_DIR / "w_watchlist.csv", index=False)
     print(f"\nSaved to {W.OUT_DIR / 'w_watchlist.csv'}")
-    print("\nRules (backtested variant C): buy, hold 7 days flat, sell. "
-          "No stop, no TP,\nequal stakes. Log every trade: date, coin, "
-          "absorb, entry, exit, PnL, BTC regime.")
-    print("Historical: +3.1%/trade raw, +2.9% vs random entries, "
-          "5 of 6 half-years positive.\nPaper trade first. "
+    print(f"\nLIVE RULES (variant D): buy, hold 7 days, sell. No TP. "
+          f"Disaster stop at {W.DISASTER_STOP:.0%}\n(tail insurance: fires "
+          "~5% of trades, costs ~0.26%/trade, caps hack/delisting risk).\n"
+          "Equal stakes. Log every trade: date, coin, absorb, entry, exit, "
+          "PnL, BTC regime.")
+    print("Historical: no stop +3.1%/trade, with -25% stop +2.8%/trade "
+          "(both +2.9%/+2.6% vs random).\nPaper trade first. "
           "Not financial advice.")
 
 

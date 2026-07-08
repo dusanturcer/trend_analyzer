@@ -26,9 +26,11 @@ TIME_STOP_H = 168                 # 7 days, matching the validated horizon
 ONE_TRADE_PER_COIN = True
 
 VARIANTS = {
-    "A_ladder":  dict(tp=[(0.08, 0.5), (0.15, 0.5)], sl=None,  cost=0.002),
-    "B_stopped": dict(tp=[(0.08, 0.5), (0.15, 0.5)], sl=-0.08, cost=0.002),
-    "C_hold7d":  dict(tp=[],                          sl=None,  cost=0.002),
+    "A_ladder":   dict(tp=[(0.08, 0.5), (0.15, 0.5)], sl=None,  cost=0.002),
+    "B_stopped":  dict(tp=[(0.08, 0.5), (0.15, 0.5)], sl=-0.08, cost=0.002),
+    "C_hold7d":   dict(tp=[],                          sl=None,  cost=0.002),
+    "D_disaster": dict(tp=[],                          sl=W.DISASTER_STOP,
+                       cost=0.002),   # C + wide tail-insurance stop = LIVE RULES
 }
 
 
