@@ -1,0 +1,6 @@
+coin,kraken_pair,krk_24h,rank,max_z_24h,spike_h_ago,move_3h,silent,strategy,crossed_h_ago,absorb_now,broke_h_ago,above_old_high
+ARB,ARB/USD,0.54M,96,5.72,14.0,+5.2%,False,E,,,,
+ICP,ICP/USD,0.40M,59,,,,,W,13.0,,,
+TRX,TRX/USD,0.93M,8,,,,,W,5.0,77.9,,
+ARB,ARB/USD,0.54M,96,,,,,B,,,1.0,+0.8%
+TIA,TIA/USD,1.20M,114,,,,,B,,,3.0,-0.5%
