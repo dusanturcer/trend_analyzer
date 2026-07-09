@@ -1,6 +1,6 @@
 """Europe daily screener: E + W + B signals on Binance candles, restricted
-to coins tradeable on OKX with USDC pairs. Each row shows the OKX pair to
-execute on and its OKX-side 24h turnover.
+to coins tradeable on Kraken (USD/EUR). Each row shows the Kraken pair to
+execute on and its Kraken-side 24h turnover.
 
     python fetch_data_eu.py      # refresh EU universe (weekly is fine)
     python ..\\fetch_data.py      # refresh shared candles (daily)
@@ -72,8 +72,8 @@ def main():
         if (now - df["open_time"].iloc[-1]).total_seconds() / 3600 > 26:
             stale += 1
             continue
-        exec_info = {"okx_pair": meta["okx_pair"],
-                     "okx_24h": f"{meta.get('okx_usd_24h', 0)/1e6:,.1f}M"}
+        exec_info = {"kraken_pair": meta["exec_pair"],
+                     "krk_24h": f"{meta.get('venue_usd_24h', 0)/1e6:,.2f}M"}
 
         # ---- B: fresh 30d-high breakout ----
         c = df["close"].reset_index(drop=True)
@@ -147,10 +147,11 @@ def main():
         pd.DataFrame(all_rows).to_csv(C.OUT_DIR / "eu_watchlist.csv",
                                       index=False)
         print(f"\nSaved to {C.OUT_DIR / 'eu_watchlist.csv'}")
-    print("\nExecute on the shown OKX pair (USDC). Check okx_24h turnover "
-          "before sizing -\nUSDC books are thinner than Binance USDT. "
-          "Re-validate on this universe first:\npython "
-          "backtest_strategies.py. Not financial advice.")
+    print("\nExecute on the shown Kraken pair (maker orders - fees are "
+          "the EU edge-killer).\nCheck krk_24h turnover before sizing; "
+          "keep stakes <= ~1% of hourly volume.\nRe-validate on this "
+          "universe first: python backtest_strategies.py. "
+          "Not financial advice.")
 
 
 if __name__ == "__main__":

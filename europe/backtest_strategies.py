@@ -165,10 +165,12 @@ def main():
                      if isinstance(t, pd.DataFrame) and len(t)])
     big.to_csv(C.OUT_DIR / "eu_backtest.csv", index=False)
     print(f"\nSaved to {C.OUT_DIR / 'eu_backtest.csv'}")
-    print("Adopt per strategy ONLY if live beats its control in (nearly) "
-          "every half-year.\nCaveat: EV computed on Binance USDT prices; "
-          "OKX USDC fills track closely via arb\nbut spreads on thinner "
-          "USDC books can cost extra - size small. Not financial advice.")
+    print(f"Costs assumed: {C.COST_ROUNDTRIP:.1%} round-trip (Kraken Pro "
+          "base maker tier).\nAdopt per strategy ONLY if live beats its "
+          "control in (nearly) every half-year.\nCaveat: EV computed on "
+          "Binance USDT prices; Kraken USD/EUR fills track via arb\nbut "
+          "thinner books cost extra spread - size small. "
+          "Not financial advice.")
 
 
 if __name__ == "__main__":
