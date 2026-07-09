@@ -1,15 +1,18 @@
-"""EUROPE variant: Binance candles for SIGNALS, OKX USDC pairs for EXECUTION.
+"""EUROPE variant: Binance candles for SIGNALS, KRAKEN USD/EUR for EXECUTION.
 
-Architecture (validated finding: volume signals are only reliable from the
-coin's primary venue - Binance; prices track across exchanges via arb):
-  - Universe: top-500 coins that have BOTH a Binance USDT pair (data) and
-    an OKX USDC spot pair (execution). Built by fetch_data_eu.py.
-  - Candles: SHARED with the parent project (../data/klines) - run the
-    parent fetch_data.py to refresh; nothing is downloaded twice.
-  - All three strategies (E, W, B) are available: Binance candles carry
-    the taker-buy data that W needs.
-  - Backtests must be re-run on this RESTRICTED universe (fewer small
-    caps -> edges may differ from the full-universe numbers).
+Venue chosen from exchange_survey.py: Kraken had the widest EU-accessible
+listing coverage (241 coins) with real (if modest) books. Key difference
+vs the parent system: Kraken Pro base fees ~0.25% maker per side ->
+COST_ROUNDTRIP = 0.5%, more than double the Binance assumption. All EU
+backtests use this number - strategies must re-earn their stakes at it.
+
+Architecture:
+  - Universe: top-500 coins with BOTH a Binance USDT pair (signal data)
+    and a Kraken USD/EUR pair with real turnover. Built by fetch_data_eu.py.
+  - Candles: SHARED with the parent project (../data/klines) - refresh via
+    the parent fetch_data.py; nothing is downloaded twice.
+  - All three strategies (E, W, B) available (Binance candles carry taker data).
+  - Backtests must be re-run on this RESTRICTED universe at Kraken costs.
 
 This module mirrors the parent config interface so shared engines
 (features, detection, analyze, report, validate_edge) work unchanged when
@@ -35,7 +38,7 @@ CHARTS_DIR = OUT_DIR / "charts"
 # ---------------------------------------------------------------- universe
 TOP_N_COINS = 500
 QUOTE_ASSET = "USDT"                    # data side (Binance candles)
-OKX_QUOTE = "USDC"                      # execution side (OKX spot)
+KRAKEN_QUOTES = ("USD", "EUR")          # execution side (Kraken spot)
 EXCLUDE_SYMBOLS = {
     "USDT", "USDC", "DAI", "TUSD", "USDE", "FDUSD", "USDD", "PYUSD",
     "USDS", "USD1", "BUSD", "GUSD", "USDP", "FRAX", "LUSD", "SUSDS",
@@ -43,7 +46,9 @@ EXCLUDE_SYMBOLS = {
     "CBETH", "METH", "RSETH", "EZETH", "SOLVBTC", "LBTC", "JITOSOL",
     "BSC-USD", "XAUT", "PAXG", "EURC", "EURT",
 }
-MIN_OKX_USD_24H = 1_000_000             # min OKX-side 24h USDC turnover
+MIN_VENUE_USD_24H = 250_000             # min Kraken-side 24h turnover
+                                        # ($250k/day ~ $10k/h: workable for
+                                        # ~EUR 1k maker orders, no bigger)
 
 # ---------------------------------------------------------------- data window
 INTERVAL = "1h"
@@ -97,4 +102,4 @@ B_HOLD_H = 168
 B_DISASTER_STOP = -0.25
 
 MIN_USD_PER_H = 100_000                 # Binance-side signal liquidity
-COST_ROUNDTRIP = 0.002
+COST_ROUNDTRIP = 0.005                  # Kraken Pro base: ~0.25% maker/side
