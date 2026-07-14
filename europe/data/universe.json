@@ -2,496 +2,397 @@
  {
   "symbol": "BTC",
   "name": "Bitcoin",
-  "market_cap": 1268802546992,
+  "market_cap": 1289608355459,
   "rank": 1,
   "pair": "BTCUSDT",
   "exchange": "binance",
   "exec_pair": "XBT/USD",
   "venue": "kraken",
-  "venue_usd_24h": 108446238
+  "venue_usd_24h": 40577619
  },
  {
   "symbol": "ETH",
   "name": "Ethereum",
-  "market_cap": 211486509086,
+  "market_cap": 220234517007,
   "rank": 2,
   "pair": "ETHUSDT",
   "exchange": "binance",
   "exec_pair": "ETH/USD",
   "venue": "kraken",
-  "venue_usd_24h": 26357587
+  "venue_usd_24h": 35764722
  },
  {
   "symbol": "BNB",
   "name": "BNB",
-  "market_cap": 77107606149,
+  "market_cap": 78235829657,
   "rank": 4,
   "pair": "BNBUSDT",
   "exchange": "binance",
   "exec_pair": "BNB/USD",
   "venue": "kraken",
-  "venue_usd_24h": 260943
+  "venue_usd_24h": 293194
  },
  {
   "symbol": "XRP",
   "name": "XRP",
-  "market_cap": 68389605104,
+  "market_cap": 69703223054,
   "rank": 6,
   "pair": "XRPUSDT",
   "exchange": "binance",
   "exec_pair": "XRP/USD",
   "venue": "kraken",
-  "venue_usd_24h": 9856921
+  "venue_usd_24h": 7325458
  },
  {
   "symbol": "SOL",
   "name": "Solana",
-  "market_cap": 45453333003,
+  "market_cap": 45478588652,
   "rank": 7,
   "pair": "SOLUSDT",
   "exchange": "binance",
   "exec_pair": "SOL/USD",
   "venue": "kraken",
-  "venue_usd_24h": 20262025
+  "venue_usd_24h": 11145477
  },
  {
   "symbol": "TRX",
   "name": "TRON",
-  "market_cap": 31474994800,
+  "market_cap": 31403431921,
   "rank": 8,
   "pair": "TRXUSDT",
   "exchange": "binance",
   "exec_pair": "TRX/USD",
   "venue": "kraken",
-  "venue_usd_24h": 930266
+  "venue_usd_24h": 422822
  },
  {
   "symbol": "DOGE",
   "name": "Dogecoin",
-  "market_cap": 11337890956,
+  "market_cap": 11647976730,
   "rank": 11,
   "pair": "DOGEUSDT",
   "exchange": "binance",
   "exec_pair": "XDG/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1317382
+  "venue_usd_24h": 1221654
  },
  {
   "symbol": "ZEC",
   "name": "Zcash",
-  "market_cap": 8297540250,
+  "market_cap": 8590887258,
   "rank": 15,
   "pair": "ZECUSDT",
   "exchange": "binance",
   "exec_pair": "ZEC/USD",
   "venue": "kraken",
-  "venue_usd_24h": 5348083
+  "venue_usd_24h": 4195524
  },
  {
   "symbol": "XLM",
   "name": "Stellar",
-  "market_cap": 6330416453,
+  "market_cap": 6536654980,
   "rank": 17,
   "pair": "XLMUSDT",
   "exchange": "binance",
   "exec_pair": "XLM/USD",
   "venue": "kraken",
-  "venue_usd_24h": 3925953
+  "venue_usd_24h": 1372613
  },
  {
   "symbol": "ADA",
   "name": "Cardano",
-  "market_cap": 6217700932,
+  "market_cap": 6426986684,
   "rank": 18,
   "pair": "ADAUSDT",
   "exchange": "binance",
   "exec_pair": "ADA/USD",
   "venue": "kraken",
-  "venue_usd_24h": 6598610
+  "venue_usd_24h": 3380145
  },
  {
   "symbol": "LINK",
   "name": "Chainlink",
-  "market_cap": 5829423443,
-  "rank": 20,
+  "market_cap": 6054358940,
+  "rank": 19,
   "pair": "LINKUSDT",
   "exchange": "binance",
   "exec_pair": "LINK/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1525960
- },
- {
-  "symbol": "BCH",
-  "name": "Bitcoin Cash",
-  "market_cap": 4773649897,
-  "rank": 22,
-  "pair": "BCHUSDT",
-  "exchange": "binance",
-  "exec_pair": "BCH/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 702924
+  "venue_usd_24h": 1004407
  },
  {
   "symbol": "LTC",
   "name": "Litecoin",
-  "market_cap": 3419985203,
+  "market_cap": 3496801623,
   "rank": 27,
   "pair": "LTCUSDT",
   "exchange": "binance",
   "exec_pair": "LTC/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1627683
+  "venue_usd_24h": 1709378
  },
  {
   "symbol": "HBAR",
   "name": "Hedera",
-  "market_cap": 3075781975,
+  "market_cap": 3053057521,
   "rank": 30,
   "pair": "HBARUSDT",
   "exchange": "binance",
   "exec_pair": "HBAR/USD",
   "venue": "kraken",
-  "venue_usd_24h": 446844
+  "venue_usd_24h": 1111102
  },
  {
   "symbol": "SUI",
   "name": "Sui",
-  "market_cap": 2923616170,
+  "market_cap": 3031968219,
   "rank": 31,
   "pair": "SUIUSDT",
   "exchange": "binance",
   "exec_pair": "SUI/USD",
   "venue": "kraken",
-  "venue_usd_24h": 2999899
+  "venue_usd_24h": 4987199
  },
  {
   "symbol": "AVAX",
   "name": "Avalanche",
-  "market_cap": 2916349842,
+  "market_cap": 2923296634,
   "rank": 32,
   "pair": "AVAXUSDT",
   "exchange": "binance",
   "exec_pair": "AVAX/USD",
   "venue": "kraken",
-  "venue_usd_24h": 2114969
+  "venue_usd_24h": 891325
  },
  {
   "symbol": "NEAR",
   "name": "NEAR Protocol",
-  "market_cap": 2516790278,
-  "rank": 36,
+  "market_cap": 2480064537,
+  "rank": 38,
   "pair": "NEARUSDT",
   "exchange": "binance",
   "exec_pair": "NEAR/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1294646
+  "venue_usd_24h": 688738
  },
  {
   "symbol": "UNI",
   "name": "Uniswap",
-  "market_cap": 2110410011,
-  "rank": 40,
+  "market_cap": 2325767855,
+  "rank": 39,
   "pair": "UNIUSDT",
   "exchange": "binance",
   "exec_pair": "UNI/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1288305
+  "venue_usd_24h": 1238463
  },
  {
   "symbol": "TAO",
   "name": "Bittensor",
-  "market_cap": 2004166257,
+  "market_cap": 2058999164,
   "rank": 41,
   "pair": "TAOUSDT",
   "exchange": "binance",
   "exec_pair": "TAO/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1279741
+  "venue_usd_24h": 1307551
  },
  {
   "symbol": "ONDO",
   "name": "Ondo",
-  "market_cap": 1557696392,
+  "market_cap": 1631179164,
   "rank": 49,
   "pair": "ONDOUSDT",
   "exchange": "binance",
   "exec_pair": "ONDO/USD",
   "venue": "kraken",
-  "venue_usd_24h": 580983
- },
- {
-  "symbol": "MORPHO",
-  "name": "Morpho",
-  "market_cap": 1431322316,
-  "rank": 52,
-  "pair": "MORPHOUSDT",
-  "exchange": "binance",
-  "exec_pair": "MORPHO/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 302198
+  "venue_usd_24h": 728872
  },
  {
   "symbol": "AAVE",
   "name": "Aave",
-  "market_cap": 1392469729,
-  "rank": 56,
+  "market_cap": 1530727385,
+  "rank": 52,
   "pair": "AAVEUSDT",
   "exchange": "binance",
   "exec_pair": "AAVE/USD",
   "venue": "kraken",
-  "venue_usd_24h": 762672
+  "venue_usd_24h": 2119481
+ },
+ {
+  "symbol": "DOT",
+  "name": "Polkadot",
+  "market_cap": 1490349335,
+  "rank": 53,
+  "pair": "DOTUSDT",
+  "exchange": "binance",
+  "exec_pair": "DOT/USD",
+  "venue": "kraken",
+  "venue_usd_24h": 789541
  },
  {
   "symbol": "WLD",
   "name": "Worldcoin",
-  "market_cap": 1359439585,
-  "rank": 57,
+  "market_cap": 1462763401,
+  "rank": 54,
   "pair": "WLDUSDT",
   "exchange": "binance",
   "exec_pair": "WLD/USD",
   "venue": "kraken",
-  "venue_usd_24h": 309539
+  "venue_usd_24h": 792424
  },
  {
   "symbol": "ICP",
   "name": "Internet Computer",
-  "market_cap": 1324345014,
-  "rank": 59,
+  "market_cap": 1269873714,
+  "rank": 60,
   "pair": "ICPUSDT",
   "exchange": "binance",
   "exec_pair": "ICP/USD",
   "venue": "kraken",
-  "venue_usd_24h": 401068
+  "venue_usd_24h": 319231
  },
  {
   "symbol": "PEPE",
   "name": "Pepe",
-  "market_cap": 1102823034,
-  "rank": 62,
+  "market_cap": 1183507051,
+  "rank": 61,
   "pair": "PEPEUSDT",
   "exchange": "binance",
   "exec_pair": "PEPE/USD",
   "venue": "kraken",
-  "venue_usd_24h": 410947
+  "venue_usd_24h": 894652
  },
  {
   "symbol": "POL",
   "name": "POL (ex-MATIC)",
-  "market_cap": 813442520,
-  "rank": 75,
+  "market_cap": 853268330,
+  "rank": 74,
   "pair": "POLUSDT",
   "exchange": "binance",
   "exec_pair": "POL/USD",
   "venue": "kraken",
-  "venue_usd_24h": 258473
- },
- {
-  "symbol": "ATOM",
-  "name": "Cosmos Hub",
-  "market_cap": 807134186,
-  "rank": 78,
-  "pair": "ATOMUSDT",
-  "exchange": "binance",
-  "exec_pair": "ATOM/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 281505
- },
- {
-  "symbol": "ALGO",
-  "name": "Algorand",
-  "market_cap": 767644581,
-  "rank": 80,
-  "pair": "ALGOUSDT",
-  "exchange": "binance",
-  "exec_pair": "ALGO/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 520956
+  "venue_usd_24h": 306710
  },
  {
   "symbol": "ENA",
   "name": "Ethena",
-  "market_cap": 741535784,
-  "rank": 84,
+  "market_cap": 798209851,
+  "rank": 79,
   "pair": "ENAUSDT",
   "exchange": "binance",
   "exec_pair": "ENA/USD",
   "venue": "kraken",
-  "venue_usd_24h": 262516
- },
- {
-  "symbol": "PUMP",
-  "name": "Pump.fun",
-  "market_cap": 604745877,
-  "rank": 92,
-  "pair": "PUMPUSDT",
-  "exchange": "binance",
-  "exec_pair": "PUMP/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 354938
+  "venue_usd_24h": 330134
  },
  {
   "symbol": "ARB",
   "name": "Arbitrum",
-  "market_cap": 572233904,
-  "rank": 96,
+  "market_cap": 623034051,
+  "rank": 93,
   "pair": "ARBUSDT",
   "exchange": "binance",
   "exec_pair": "ARB/USD",
   "venue": "kraken",
-  "venue_usd_24h": 543430
+  "venue_usd_24h": 630917
+ },
+ {
+  "symbol": "PUMP",
+  "name": "Pump.fun",
+  "market_cap": 579734798,
+  "rank": 95,
+  "pair": "PUMPUSDT",
+  "exchange": "binance",
+  "exec_pair": "PUMP/USD",
+  "venue": "kraken",
+  "venue_usd_24h": 510213
  },
  {
   "symbol": "NIGHT",
   "name": "Midnight",
-  "market_cap": 520579054,
-  "rank": 102,
+  "market_cap": 525148826,
+  "rank": 101,
   "pair": "NIGHTUSDT",
   "exchange": "binance",
   "exec_pair": "NIGHT/USD",
   "venue": "kraken",
-  "venue_usd_24h": 922239
+  "venue_usd_24h": 574292
  },
  {
   "symbol": "INJ",
   "name": "Injective",
-  "market_cap": 491236768,
-  "rank": 107,
+  "market_cap": 502061991,
+  "rank": 105,
   "pair": "INJUSDT",
   "exchange": "binance",
   "exec_pair": "INJ/USD",
   "venue": "kraken",
-  "venue_usd_24h": 889410
+  "venue_usd_24h": 470436
+ },
+ {
+  "symbol": "VIRTUAL",
+  "name": "Virtuals Protocol",
+  "market_cap": 399273583,
+  "rank": 114,
+  "pair": "VIRTUALUSDT",
+  "exchange": "binance",
+  "exec_pair": "VIRTUAL/USD",
+  "venue": "kraken",
+  "venue_usd_24h": 373779
  },
  {
   "symbol": "TIA",
   "name": "Celestia",
-  "market_cap": 397305696,
-  "rank": 114,
+  "market_cap": 388615962,
+  "rank": 117,
   "pair": "TIAUSDT",
   "exchange": "binance",
   "exec_pair": "TIA/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1201379
- },
- {
-  "symbol": "FET",
-  "name": "Artificial Superintelligence Alliance",
-  "market_cap": 361637318,
-  "rank": 119,
-  "pair": "FETUSDT",
-  "exchange": "binance",
-  "exec_pair": "FET/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 392874
- },
- {
-  "symbol": "JTO",
-  "name": "Jito",
-  "market_cap": 317438461,
-  "rank": 131,
-  "pair": "JTOUSDT",
-  "exchange": "binance",
-  "exec_pair": "JTO/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 369051
+  "venue_usd_24h": 308539
  },
  {
   "symbol": "CRV",
   "name": "Curve DAO",
-  "market_cap": 311303664,
-  "rank": 133,
+  "market_cap": 328095023,
+  "rank": 128,
   "pair": "CRVUSDT",
   "exchange": "binance",
   "exec_pair": "CRV/USD",
   "venue": "kraken",
-  "venue_usd_24h": 373083
+  "venue_usd_24h": 274250
  },
  {
   "symbol": "LDO",
   "name": "Lido DAO",
-  "market_cap": 253954714,
-  "rank": 144,
+  "market_cap": 266688119,
+  "rank": 139,
   "pair": "LDOUSDT",
   "exchange": "binance",
   "exec_pair": "LDO/USD",
   "venue": "kraken",
-  "venue_usd_24h": 423151
- },
- {
-  "symbol": "XPL",
-  "name": "Plasma",
-  "market_cap": 242483118,
-  "rank": 146,
-  "pair": "XPLUSDT",
-  "exchange": "binance",
-  "exec_pair": "XPL/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 345303
+  "venue_usd_24h": 289782
  },
  {
   "symbol": "SYRUP",
   "name": "Maple Finance",
-  "market_cap": 191568013,
-  "rank": 169,
+  "market_cap": 228406142,
+  "rank": 150,
   "pair": "SYRUPUSDT",
   "exchange": "binance",
   "exec_pair": "SYRUP/USD",
   "venue": "kraken",
-  "venue_usd_24h": 334659
- },
- {
-  "symbol": "EIGEN",
-  "name": "EigenCloud (prev. EigenLayer)",
-  "market_cap": 180330915,
-  "rank": 177,
-  "pair": "EIGENUSDT",
-  "exchange": "binance",
-  "exec_pair": "EIGEN/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 295390
- },
- {
-  "symbol": "APE",
-  "name": "ApeCoin",
-  "market_cap": 163581909,
-  "rank": 190,
-  "pair": "APEUSDT",
-  "exchange": "binance",
-  "exec_pair": "APE/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 520252
- },
- {
-  "symbol": "MANA",
-  "name": "Decentraland",
-  "market_cap": 142756770,
-  "rank": 207,
-  "pair": "MANAUSDT",
-  "exchange": "binance",
-  "exec_pair": "MANA/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 331431
+  "venue_usd_24h": 336020
  },
  {
   "symbol": "SYN",
   "name": "Synapse",
-  "market_cap": 80607953,
-  "rank": 306,
+  "market_cap": 67593208,
+  "rank": 351,
   "pair": "SYNUSDT",
   "exchange": "binance",
   "exec_pair": "SYN/USD",
   "venue": "kraken",
-  "venue_usd_24h": 1418841
- },
- {
-  "symbol": "BLUR",
-  "name": "Blur",
-  "market_cap": 52857500,
-  "rank": 422,
-  "pair": "BLURUSDT",
-  "exchange": "binance",
-  "exec_pair": "BLUR/USD",
-  "venue": "kraken",
-  "venue_usd_24h": 259401
+  "venue_usd_24h": 2594754
  }
 ]
