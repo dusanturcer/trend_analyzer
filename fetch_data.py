@@ -202,14 +202,23 @@ def main():
                 old = pd.read_parquet(path)
                 t0, t1 = old["open_time"].min(), old["open_time"].max()
                 covered = t0 <= start + timedelta(days=7)
-                if not covered and c["exchange"] == "binance":
+                if not covered:
                     # cache starts "late" - maybe the coin is just young.
                     # Probe: does the exchange have anything earlier?
-                    probe = get(f"{C.BINANCE_BASE}/api/v3/klines",
-                                {"symbol": c["pair"], "interval": C.INTERVAL,
-                                 "startTime": start_ms, "limit": 1})
-                    covered = (bool(probe) and probe[0][0]
-                               >= int(t0.timestamp() * 1000) - 3_600_000)
+                    if c["exchange"] == "binance":
+                        probe = get(f"{C.BINANCE_BASE}/api/v3/klines",
+                                    {"symbol": c["pair"],
+                                     "interval": C.INTERVAL,
+                                     "startTime": start_ms, "limit": 1})
+                        covered = (bool(probe) and probe[0][0]
+                                   >= int(t0.timestamp() * 1000) - 3_600_000)
+                    else:  # okx: any candle older than our earliest?
+                        resp = get(f"{C.OKX_BASE}/api/v5/market/"
+                                   "history-candles",
+                                   {"instId": c["pair"], "bar": "1H",
+                                    "limit": 1,
+                                    "after": str(int(t0.timestamp() * 1000))})
+                        covered = not resp.get("data")
                     time.sleep(C.REQUEST_SLEEP)
                 if covered:
                     # window start covered -> incremental top-up only
