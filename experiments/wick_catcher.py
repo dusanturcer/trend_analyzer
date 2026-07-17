@@ -41,7 +41,11 @@ COST = 0.002
 DISASTER = -0.25
 VARIANTS = {"A_5pct": (0.05, 0.03),
             "B_8pct": (0.08, 0.05),
-            "C_12pct": (0.12, 0.08)}
+            "C_12pct": (0.12, 0.08),
+            # pre-registered depth extension (the 5->8->12 gradient was
+            # monotonic; probing for the plateau, NOT selecting the peak):
+            "D_16pct": (0.16, 0.10),
+            "E_20pct": (0.20, 0.12)}
 
 
 def exit_trade(df, i, entry, tp):
@@ -91,10 +95,17 @@ def run_side(df, entries_kind, depth, tp, rng=None, n_target=None):
     return trades
 
 
-def main():
+def main(cost=None, universe_path=None, tag="parent"):
+    global COST
+    if cost is not None:
+        COST = cost
     OUT_DIR.mkdir(exist_ok=True)
-    with open(C.DATA_DIR / "universe.json") as f:
+    upath = Path(universe_path) if universe_path else \
+        C.DATA_DIR / "universe.json"
+    with open(upath) as f:
         universe = {c["pair"]: c for c in json.load(f)}
+    print(f"[{tag}] universe={len(universe)} coins, "
+          f"costs={COST:.2%} round-trip")
 
     buckets = {}
     files = sorted(C.KLINES_DIR.glob("*.parquet"))
@@ -152,8 +163,8 @@ def main():
 
     big = pd.concat([pd.DataFrame(tr).assign(variant=k)
                      for k, tr in buckets.items() if tr])
-    big.to_csv(OUT_DIR / "wick_catcher.csv", index=False)
-    print(f"\nTrades saved to {OUT_DIR / 'wick_catcher.csv'}")
+    big.to_csv(OUT_DIR / f"wick_catcher_{tag}.csv", index=False)
+    print(f"\nTrades saved to {OUT_DIR / f'wick_catcher_{tag}.csv'}")
     print("Bar: EV>0 AND beats control in (nearly) every half-year. "
           "Watch the down-regime\nperiods (2025-H1) - that's where knife-"
           "catching dies. Not financial advice.")
