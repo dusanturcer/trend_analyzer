@@ -105,28 +105,32 @@ def main():
                     if np.isfinite(dfw["absorb"].iloc[-1]) else None,
                 })
 
-        # ---- E: fresh silent z>=4 spike (rank >= 76) ----
+        # ---- E: volume spikes z>=2 (watch) / z>=4 (trade), rank >= 76 ----
         if meta["rank"] >= C.E_MIN_RANK:
             dfb = F.add_baselines(df)
             win = dfb.iloc[-FRESH_H:]
             max_z = float(win["vol_z"].max())
-            if max_z >= C.E_MIN_Z:
+            if max_z >= 2.0:
                 move3h = float(dfb["close"].iloc[-1]
                                / dfb["close"].iloc[-4] - 1)
+                silent = abs(move3h) < C.E_SILENT_MAX_MOVE_3H
+                grade = ("z4 TRADE" if max_z >= C.E_MIN_Z else
+                         "z3 watch" if max_z >= 3 else "z2 watch")
                 e_rows.append({
+                    "grade": grade,
                     "coin": meta["symbol"], **exec_info,
                     "rank": meta["rank"], "max_z_24h": round(max_z, 2),
                     "spike_h_ago": len(dfb) - 1 - int(win["vol_z"].idxmax()),
                     "move_3h": f"{move3h:+.1%}",
-                    "silent": abs(move3h) < C.E_SILENT_MAX_MOVE_3H,
+                    "silent": silent,
                 })
 
     if stale:
         print(f"NOTE: {stale} coins stale - run ..\\fetch_data.py first.")
 
     for label, rows, sort in [
-            (f"E: silent z>={C.E_MIN_Z:.0f} spikes (36h trades)", e_rows,
-             ("silent", "max_z_24h")),
+            ("E: volume spikes (z4+silent = trade tier; z2/z3 = watch)",
+             e_rows, ("max_z_24h",)),
             ("W: fresh absorption crossings (7d holds, -25% stop)", w_rows,
              ("crossed_h_ago",)),
             ("B: fresh 30d-high breakouts (7d holds, -25% stop)", b_rows,
