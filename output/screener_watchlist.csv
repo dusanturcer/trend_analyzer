@@ -1,8 +1,0 @@
-grade,coin,pair,rank,max_vol_z,spike_hours_ago,spike_hours_24h,price_move_24h,buy_ratio,usd_per_h,silent
-z3 watch,ARB,ARBUSDT,108,3.47,7,1,-2.5%,0.494,119k,True
-z3 watch,JTO,JTOUSDT,134,3.02,5,1,-22.7%,0.466,236k,False
-z3 watch,APT,APTUSDT,103,3.02,4,1,-3.9%,0.448,125k,False
-z2 watch,DASH,DASHUSDT,111,2.6,20,0,-3.3%,0.49,153k,False
-z2 watch,PENGU,PENGUUSDT,115,2.49,11,0,-7.0%,0.465,192k,False
-z2 watch,PUMP,PUMPUSDT,92,2.36,10,0,-8.9%,0.473,236k,False
-z2 watch,RENDER,RENDERUSDT,77,2.26,11,0,-4.5%,0.462,135k,False
