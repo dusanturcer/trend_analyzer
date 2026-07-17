@@ -74,8 +74,10 @@ def run_side(df, entries_kind, depth, tp, rng=None, n_target=None):
             busy = i + held
             trades.append((df["open_time"].iloc[int(i)], pnl - COST, held))
     else:
-        idx = np.sort(rng.integers(lo_i, len(close) - HOLD_MAX_H - 1,
-                                   max(n_target, 1) * 2))
+        hi_i = len(close) - HOLD_MAX_H - 1
+        if not n_target or hi_i <= lo_i:
+            return trades
+        idx = np.sort(rng.integers(lo_i, hi_i, n_target * 2))
         busy = -1
         for i in idx:
             if len(trades) >= n_target:
