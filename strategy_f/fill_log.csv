@@ -1,0 +1,2 @@
+date_utc,coin,kraken_pair,bid_price,filled,fill_price,fill_size_eur,exit_reason,exit_price,pnl_pct,hours_held,btc_regime,notes
+,,,,,,,,,,,,example row -> 2026-07-20,ZEC,ZEC/USD,412.50,yes,412.50,150,TP,445.50,+7.5,9,below_ma,clean cascade fill
